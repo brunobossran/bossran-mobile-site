@@ -160,6 +160,13 @@ section { padding: 72px 0; }
 .signup small { font-size: 13px; line-height: 1.45; color: var(--faint); }
 .signup .row2 { display: grid; gap: 16px; }
 .signup .group { display: grid; gap: 16px; }
+/* Phone model picker (assets/phone-models.js): list under the field that narrows as you type */
+.model-pick { position: relative; }
+.model-list { position: absolute; z-index: 15; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 6px 0; list-style: none; overflow-y: auto; overscroll-behavior: contain; background: var(--field); border: 1px solid var(--gold); border-radius: 10px; box-shadow: 0 14px 30px rgba(0, 0, 0, .6); }
+.model-list li { padding: 12px 14px; font-size: 16px; line-height: 1.25; color: var(--text); cursor: pointer; }
+.model-list li[aria-selected="true"], .model-list li[role="option"]:hover { background: var(--gold); color: var(--ground); }
+.model-list .model-brand { font-weight: 700; }
+.model-list .model-note { font-size: 13px; color: var(--faint); cursor: default; }
 .signup .group[hidden] { display: none; }
 .signup .check { display: flex; gap: 10px; align-items: flex-start; }
 .signup .check input { min-height: 0; width: 20px; height: 20px; margin: 2px 0 0; flex: none; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--red); }
@@ -341,7 +348,8 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
           </label>
           <div class="row2">
             <label for="f-a-model">Phone model
-              <input id="f-a-model" name="model" required maxlength="60" placeholder="e.g. Redmi Note 13">
+              <input id="f-a-model" name="model" data-models="android" required maxlength="60" placeholder="Type your phone, e.g. Redmi Note 13">
+              <small>Start typing, then tap your phone in the list.</small>
             </label>
             <label for="f-a-ver">Android version
               <select id="f-a-ver" name="os_version" required>
@@ -358,7 +366,8 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
           </label>
           <div class="row2">
             <label for="f-i-model">iPhone or iPad model
-              <input id="f-i-model" name="model" required maxlength="60" placeholder="e.g. iPhone 13" disabled>
+              <input id="f-i-model" name="model" data-models="ios" required maxlength="60" placeholder="Type your model, e.g. iPhone 13" disabled>
+              <small>Start typing, then tap your model in the list.</small>
             </label>
             <label for="f-i-ver">iOS version
               <select id="f-i-ver" name="os_version" required disabled>
@@ -418,6 +427,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   </figure>
 </dialog>
 
+<script src="assets/phone-models.js?v=1"></script>
 <script>
 // Hero gameplay loop: stays on its still frame for visitors who ask for less motion
 const loop = document.getElementById('loop');
