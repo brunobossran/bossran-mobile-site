@@ -4,53 +4,155 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BossRan Mobile</title>
-<meta name="description" content="BossRan Mobile is coming to Android and iOS. Join the test list and we'll email you when testing opens on your phone.">
-<meta name="theme-color" content="#0d0806">
+<meta name="description" content="BossRan Mobile is coming to Android and iOS. Watch the teaser and join the test list. We'll email you when testing opens on your phone.">
+<meta name="theme-color" content="#0d0a07">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mobile.bossran.net/">
+<meta property="og:title" content="BossRan Mobile: Balik RAN. Kahit saan.">
+<meta property="og:description" content="Classic BossRan, coming soon to Android and iOS. Watch the teaser and join the test list.">
+<meta property="og:image" content="https://mobile.bossran.net/assets/teaser-poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icons/favicon-32x32.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
 :root {
-  --bg: #0d0806;
-  --panel: #1a100b;
-  --field: #120b08;
-  --border: rgba(232, 182, 76, .22);
-  --gold: #e8b64c;
-  --gold-soft: #f4d48a;
-  --red: #c8261e;
-  --text: #f3ece2;
-  --muted: rgba(243, 236, 226, .78);
-  --faint: rgba(243, 236, 226, .58);
+  --ground: #0d0a07;
+  --panel: rgba(15, 12, 8, .82);
+  --field: #120d09;
+  --border: rgba(247, 196, 72, .22);
+  --border-strong: rgba(247, 196, 72, .55);
+  --gold: #f7c448;
+  --gold-soft: #ffe29a;
+  --red: #e23426;
+  --text: #fff;
+  --text-2: #ede6da;
+  --muted: #cfc6b8;
+  --faint: rgba(237, 230, 218, .6);
+  --gutter: 16px;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
   margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: radial-gradient(120% 60% at 50% 0, #2a120c 0, var(--bg) 60%) fixed, var(--bg);
-  color: var(--text);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--ground);
+  color: var(--text-2);
+  font: 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
 }
-.wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
-main { flex: 1; }
-.hero { padding: 72px 0 56px; }
-.tag { display: inline-block; margin: 0 0 16px; padding: 4px 12px; border: 1px solid var(--red); border-radius: 999px; color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-h1 { margin: 0 0 12px; color: var(--gold); font-size: clamp(36px, 10vw, 64px); line-height: 1.05; letter-spacing: .04em; text-transform: uppercase; }
-h2 { margin: 0 0 8px; color: var(--gold); font-size: clamp(26px, 7vw, 36px); line-height: 1.1; letter-spacing: .04em; text-transform: uppercase; }
-.lead { margin: 0 0 24px; color: var(--muted); font-size: 18px; max-width: 34ch; }
-.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; background: var(--red); border: 1px solid var(--red); border-radius: 10px; color: #fff; font: 700 16px/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer; }
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: var(--gold); }
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* House type: kicker with gold rules, two-line italic headline, second line gold */
+.kicker { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 14px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.kicker::before, .kicker::after { content: ""; width: 22px; height: 2px; background: var(--gold); flex: none; }
+.display { margin: 0; color: var(--text); font-weight: 900; font-style: italic; line-height: .94; letter-spacing: -.01em; text-transform: uppercase; text-shadow: 0 6px 28px rgba(0, 0, 0, .55); }
+.display span { display: block; color: var(--gold); }
+h1.display { font-size: clamp(48px, 13vw, 112px); }
+h2.display { font-size: clamp(38px, 9vw, 72px); }
+.rule { width: 160px; height: 3px; margin: 22px auto 0; background: linear-gradient(90deg, rgba(247, 196, 72, 0), var(--gold), rgba(247, 196, 72, 0)); }
+.lead { margin: 20px auto 0; max-width: 40ch; color: var(--muted); font-size: 18px; }
+.center { text-align: center; }
+
+/* Buttons: red skewed CTA (house style) and a quiet outline button */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 28px; background: var(--red); border: 0; border-radius: 6px; color: #fff; font: italic 900 18px/1 inherit; font-family: inherit; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; cursor: pointer; transform: skewX(-10deg); box-shadow: 0 10px 30px rgba(226, 52, 38, .35), inset 0 2px 0 rgba(255, 140, 110, .55); }
 .btn:hover { filter: brightness(1.1); }
 .btn:disabled { opacity: .6; cursor: progress; }
-.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
-.btn svg { width: 18px; height: 18px; }
+.btn svg { width: 20px; height: 20px; }
+.btn-ghost { background: rgba(13, 10, 7, .55); border: 2px solid var(--border-strong); color: var(--text); box-shadow: none; }
 .btn-block { width: 100%; }
-section { padding: 48px 0; border-top: 1px solid var(--border); }
+.ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 18px; margin-top: 30px; }
+
+/* Header */
+.hdr { position: sticky; top: 0; z-index: 20; background: rgba(13, 10, 7, .82); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.hdr .wrap { display: flex; align-items: center; gap: 20px; min-height: 60px; }
+.hdr .brand img { height: 38px; width: auto; }
+.hdr nav { display: none; gap: 26px; margin-left: auto; }
+.hdr nav a { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; }
+.hdr nav a:hover { color: var(--gold); }
+.hdr .join { margin-left: auto; min-height: 40px; padding: 0 16px; font-size: 14px; }
+@media (min-width: 820px) {
+  .hdr nav { display: flex; }
+  .hdr .join { margin-left: 0; }
+}
+
+/* Gameplay backdrop: blurred footage, dark wash, warm glow, drifting gold bokeh */
+.scene { position: relative; isolation: isolate; overflow: hidden; }
+.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/gameplay-loop.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
+.scene::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 50% at 50% 62%, rgba(247, 170, 60, .24), rgba(247, 170, 60, 0) 70%), linear-gradient(180deg, rgba(13, 10, 7, .55) 0, rgba(13, 10, 7, .7) 45%, var(--ground) 100%); }
+.bokeh { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.bokeh i { position: absolute; bottom: -40px; width: var(--s); height: var(--s); border-radius: 50%; background: radial-gradient(circle, rgba(255, 205, 110, .55), rgba(255, 205, 110, 0) 70%); animation: drift var(--d) linear infinite; animation-delay: var(--t); }
+@keyframes drift { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: 1; } 100% { transform: translate(var(--x), -120vh); opacity: 0; } }
+
+/* Hero */
+.hero { padding: 48px 0 40px; text-align: center; }
+.hero-logo { width: min(290px, 64%); margin: 0 auto 18px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5)); }
+
+/* Phone in two hands with live gameplay on screen (same art as the teaser) */
+.rig-crop { width: calc(100% + var(--gutter) * 2); max-width: 1000px; margin: 34px auto 0; margin-left: calc(var(--gutter) * -1); aspect-ratio: 1700 / 960; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
+@media (min-width: 1032px) { .rig-crop { margin-left: auto; width: 100%; } }
+.rig { position: relative; width: 100%; aspect-ratio: 1700 / 1150; animation: sway 6.5s ease-in-out infinite; transform-origin: 50% 40%; }
+@keyframes sway { 0%, 100% { transform: translateY(0) rotate(-.7deg); } 50% { transform: translateY(-6px) rotate(.7deg); } }
+.rig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.rig .screen { position: absolute; left: 15.294%; top: 12%; width: 69.412%; height: 47.478%; border-radius: 3.9% / 8.42%; overflow: hidden; background: #000; }
+.rig .screen video { width: 100%; height: 100%; object-fit: cover; }
+.note { margin: 10px 0 0; color: var(--faint); font-size: 13px; }
+
+.stores { margin-top: 30px; }
+.stores p { margin: 0 0 12px; color: var(--text); font-size: 14px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; }
+.badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.badges img { height: 48px; width: auto; }
+
+/* Sections */
+section { padding: 72px 0; }
+.band { border-top: 1px solid var(--border); }
+
+/* Teaser */
+.player { position: relative; max-width: 960px; margin: 36px auto 0; border: 2px solid var(--border-strong); border-radius: 18px; overflow: hidden; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 60px rgba(247, 170, 60, .12); }
+.player video { width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.player .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0; background: rgba(13, 10, 7, .25); border: 0; cursor: pointer; }
+.player .play span { display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 50%; background: var(--red); box-shadow: 0 10px 40px rgba(226, 52, 38, .55), 0 0 0 8px rgba(226, 52, 38, .22); transition: transform .15s; }
+.player .play:hover span { transform: scale(1.06); }
+.player .play svg { width: 34px; height: 34px; margin-left: 5px; color: #fff; }
+.player .play[hidden] { display: none; }
+
+.features { display: grid; gap: 14px; max-width: 960px; margin: 28px auto 0; padding: 0; list-style: none; }
+.features li { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 18px; text-align: left; }
+.features .ico { flex: none; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 12px; background: rgba(247, 196, 72, .12); color: var(--gold); }
+.features .ico svg { width: 28px; height: 28px; }
+.features b { display: block; color: var(--text); font-size: 18px; font-style: italic; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; }
+.features p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+@media (min-width: 760px) { .features { grid-template-columns: repeat(3, 1fr); } .features li { flex-direction: column; } }
+
+/* Posters: swipe row on phones, grid on wide screens */
+.posters { display: grid; grid-auto-flow: column; grid-auto-columns: min(68vw, 300px); gap: 14px; margin: 36px calc(var(--gutter) * -1) 0; padding: 4px var(--gutter) 18px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; list-style: none; }
+.posters::-webkit-scrollbar { display: none; }
+.posters li { scroll-snap-align: center; }
+.posters button { display: block; width: 100%; padding: 0; background: none; border: 0; cursor: zoom-in; text-align: left; color: inherit; font: inherit; }
+.posters img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 14px; border: 2px solid var(--border); box-shadow: 0 18px 40px rgba(0, 0, 0, .5); transition: transform .2s, border-color .2s; }
+.posters button:hover img, .posters button:focus-visible img { transform: translateY(-4px); border-color: var(--gold); }
+.posters span { display: block; margin-top: 10px; color: var(--text); font-size: 14px; font-weight: 800; font-style: italic; letter-spacing: .04em; text-transform: uppercase; }
+.swipe { margin: 0; color: var(--faint); font-size: 13px; text-align: center; }
+@media (min-width: 900px) {
+  .posters { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); grid-auto-columns: auto; margin: 36px 0 0; padding: 4px 0 0; overflow: visible; }
+  .swipe { display: none; }
+}
+
+/* Poster viewer */
+.lb { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; background: transparent; border: 0; color: var(--text-2); overflow: visible; }
+.lb::backdrop { background: rgba(5, 4, 3, .88); }
+.lb figure { margin: 0; }
+.lb img { width: 100%; max-height: calc(100dvh - 150px); object-fit: contain; border-radius: 14px; }
+.lb figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.lb figcaption b { color: var(--text); font-style: italic; font-weight: 900; text-transform: uppercase; }
+.lb .nav { display: flex; gap: 8px; }
+.lb button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 50%; color: var(--gold); cursor: pointer; }
+.lb button svg { width: 20px; height: 20px; }
+.lb .close { position: absolute; top: -14px; right: -14px; background: var(--red); border-color: var(--red); color: #fff; }
 
 /* Test list sign-up (same fields as the EP7 mobile site; posts to BossRan's own Google Sheet) */
-.signup { margin-top: 24px; padding: 24px 18px; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; display: grid; gap: 16px; }
-.signup h3 { margin: 0; color: var(--gold-soft); font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.signup { max-width: 680px; margin: 36px auto 0; padding: 24px 18px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 18px; display: grid; gap: 16px; text-align: left; }
+.signup h3 { margin: 0; color: var(--gold); font-size: 20px; font-style: italic; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .signup label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
 .signup input, .signup select { font: 16px inherit; font-family: inherit; color: var(--text); background: var(--field); border: 1px solid var(--border); border-radius: 10px; min-height: 52px; padding: 0 14px; width: 100%; appearance: none; -webkit-appearance: none; }
 .signup select { background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
@@ -61,13 +163,12 @@ section { padding: 48px 0; border-top: 1px solid var(--border); }
 .signup .group[hidden] { display: none; }
 .signup .check { display: flex; gap: 10px; align-items: flex-start; }
 .signup .check input { min-height: 0; width: 20px; height: 20px; margin: 2px 0 0; flex: none; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--red); }
-.signup .check a, .faq a { color: var(--gold); }
 .signup .fine { margin: 0; font-size: 13px; color: var(--faint); text-align: center; }
 .platform { border: 0; margin: 0; padding: 0; min-width: 0; }
 .platform legend { padding: 0; margin-bottom: 6px; font-size: 14px; color: var(--muted); }
 .seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 .signup .seg input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; min-height: 0; margin: 0; padding: 0; border: 0; opacity: 0; pointer-events: none; }
-.seg label { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg label { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; }
 .seg label svg { width: 18px; height: 18px; }
 .seg input:checked + label { background: var(--red); color: #fff; }
 .seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: -2px; }
@@ -80,14 +181,31 @@ section { padding: 48px 0; border-top: 1px solid var(--border); }
   .signup .row2 { grid-template-columns: 1fr 1fr; }
 }
 
+.faq { max-width: 760px; margin: 28px auto 0; text-align: left; }
 .faq details { border-bottom: 1px solid var(--border); }
-.faq summary { padding: 16px 0; font-weight: 700; cursor: pointer; }
+.faq summary { padding: 18px 0; color: var(--text); font-weight: 800; cursor: pointer; }
+.faq summary::marker { color: var(--gold); }
 .faq p { margin: 0 0 16px; color: var(--muted); }
 
-footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
+footer { border-top: 1px solid var(--border); padding: 32px 0 44px; color: var(--muted); font-size: 13px; }
+footer .brand img { height: 44px; width: auto; margin-bottom: 18px; }
 footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
 footer a { color: var(--text); text-decoration: none; }
+footer a:hover { color: var(--gold); }
 footer p { margin: 0; font-size: 13px; max-width: 70ch; }
+
+@media (min-width: 760px) {
+  :root { --gutter: 24px; }
+  .hero { padding: 72px 0 56px; }
+  section { padding: 96px 0; }
+  .kicker { gap: 14px; font-size: 14px; letter-spacing: .3em; }
+  .kicker::before, .kicker::after { width: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rig, .bokeh i { animation: none; }
+  .bokeh { display: none; }
+}
 </style>
 </head>
 <body>
@@ -96,25 +214,111 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8.5V6.8c0-.8.5-1 .9-1H17V2.1L14.1 2C10.9 2 10.2 4.4 10.2 6v2.5H8V12h2.2v10H14V12h2.8l.4-3.5H14z"/></symbol>
     <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.4-.6 3.1-1.5z"/></symbol>
     <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22a11.5 11.5 0 0 0-9.84 0L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></symbol>
+    <symbol id="i-touch" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"/><circle cx="7" cy="12" r="2.2"/><circle cx="16" cy="10.5" r="1.2"/><circle cx="18.5" cy="13" r="1.2"/><circle cx="14.5" cy="13.5" r="1.2"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5.5c0 4.6-3.3 8.2-8 9.5-4.7-1.3-8-4.9-8-9.5V6l8-3z"/><path d="M9 12l2 2 4-4"/></g></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
   </defs>
 </svg>
 
-<main>
-  <div class="hero">
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="BossRan Mobile home"><img src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile"></a>
+    <nav aria-label="Main">
+      <a href="#teaser">Teaser</a>
+      <a href="#posters">Posters</a>
+      <a href="#test">Test list</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn join" href="#signup">Join the test</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="scene hero">
+    <div class="scene-bg" aria-hidden="true"></div>
+    <div class="bokeh" aria-hidden="true">
+      <i style="left:6%;--s:18px;--d:15s;--t:-2s;--x:20px"></i><i style="left:14%;--s:30px;--d:19s;--t:-11s;--x:-30px"></i>
+      <i style="left:23%;--s:12px;--d:13s;--t:-6s;--x:14px"></i><i style="left:31%;--s:24px;--d:21s;--t:-15s;--x:26px"></i>
+      <i style="left:42%;--s:14px;--d:16s;--t:-3s;--x:-18px"></i><i style="left:55%;--s:28px;--d:22s;--t:-9s;--x:22px"></i>
+      <i style="left:63%;--s:16px;--d:14s;--t:-12s;--x:-12px"></i><i style="left:72%;--s:22px;--d:18s;--t:-5s;--x:30px"></i>
+      <i style="left:81%;--s:12px;--d:12s;--t:-8s;--x:-20px"></i><i style="left:89%;--s:32px;--d:24s;--t:-17s;--x:16px"></i>
+      <i style="left:95%;--s:16px;--d:17s;--t:-1s;--x:-24px"></i>
+    </div>
     <div class="wrap">
-      <span class="tag">Coming soon</span>
-      <h1>BossRan Mobile</h1>
-      <p class="lead">Classic BossRan, built for Android and iOS. Join the test list and we'll email you when testing opens on your phone.</p>
+      <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
+      <p class="kicker">Coming soon · Android &amp; iOS</p>
+      <h1 class="display">Balik RAN.<span>Kahit saan.</span></h1>
+      <p class="lead">Classic BossRan, built for your phone. Join the test list and we'll email you when testing opens on your phone.</p>
       <div class="ctas">
         <a class="btn" href="#signup">Join the test list</a>
         <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Follow on Facebook</a>
       </div>
+      <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
+        <div class="rig">
+          <img src="assets/stage-under.svg" alt="">
+          <div class="screen"><video id="loop" src="assets/gameplay-loop.mp4" poster="assets/gameplay-loop.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay: a character running through the practice yard"></video></div>
+          <img src="assets/stage-over.svg" alt="">
+        </div>
+      </figure>
+      <p class="note">Real gameplay from the BossRan Mobile iPhone simulator build.</p>
+      <div class="stores">
+        <p id="stores-label">Coming soon to</p>
+        <div class="badges" aria-describedby="stores-label">
+          <img src="assets/badge-appstore.svg" width="120" height="40" alt="Download on the App Store, coming soon">
+          <img src="assets/badge-googleplay.png" width="564" height="168" alt="Get it on Google Play, coming soon">
+        </div>
+      </div>
     </div>
   </div>
 
-  <section id="test" aria-labelledby="test-title">
+  <section id="teaser" class="band center" aria-labelledby="teaser-title">
     <div class="wrap">
-      <h2 id="test-title">Get early access</h2>
+      <p class="kicker">Watch the teaser</p>
+      <h2 class="display" id="teaser-title">RAN, now<span>on mobile.</span></h2>
+      <div class="rule"></div>
+      <div class="player">
+        <video id="teaser-video" src="assets/teaser.mp4" poster="assets/teaser-poster.jpg" preload="none" playsinline controls aria-label="BossRan Mobile teaser video"></video>
+        <button class="play" type="button" id="teaser-play" aria-label="Play the teaser"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span></button>
+      </div>
+      <p class="note">Motion-smoothed footage from the iPhone simulator build.</p>
+      <ul class="features">
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-touch"/></svg></span><div><b>Built for touch</b><p>A joystick and skill buttons placed for your thumbs.</p></div></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><b>Play anywhere</b><p>No PC needed. Your RAN goes where you go.</p></div></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Same schools</b><p>Sacred Gate, Mystic Peak or Phoenix. Pick your side again.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="posters" class="band center" aria-labelledby="posters-title">
+    <div class="wrap">
+      <p class="kicker">From our Facebook page</p>
+      <h2 class="display" id="posters-title">Sali ka<span>sa usapan.</span></h2>
+      <div class="rule"></div>
+      <p class="lead">Vote for your school, tag your barkada and share your RAN stories on our page.</p>
+      <ul class="posters" id="poster-list">
+        <li><button type="button" data-full="assets/posters/01-balik-ran.jpg"><img src="assets/posters/01-balik-ran-sm.jpg" width="546" height="720" loading="lazy" alt="Poster: Mga RAN veterans. Balik RAN, kahit saan. Handa ka na ba?"><span>Balik RAN</span></button></li>
+        <li><button type="button" data-full="assets/posters/02-school-poll.jpg"><img src="assets/posters/02-school-poll-sm.jpg" width="546" height="720" loading="lazy" alt="Poster: School check. Saan ka kakampi? A Sacred Gate, B Mystic Peak, C Phoenix. Comment A, B or C."><span>Saan ka kakampi?</span></button></li>
+        <li><button type="button" data-full="assets/posters/03-squad-roll-call.jpg"><img src="assets/posters/03-squad-roll-call-sm.jpg" width="576" height="720" loading="lazy" alt="Poster: Squad roll call. Buuin ulit ang barkada. I-tag ang 3 tropa mo!"><span>Buuin ang barkada</span></button></li>
+        <li><button type="button" data-full="assets/posters/05-iphone-users.jpg"><img src="assets/posters/05-iphone-users-sm.jpg" width="546" height="720" loading="lazy" alt="Poster: iPhone users, kasama kayo! Balik RAN, pati sa iPhone. iPhone simulator preview."><span>iPhone users</span></button></li>
+        <li><button type="button" data-full="assets/posters/06-ios-iphone-focus.jpg"><img src="assets/posters/06-ios-iphone-focus-sm.jpg" width="576" height="720" loading="lazy" alt="Poster: Coming soon to iOS. BossRan on iPhone. RAN sa iPhone, malapit na."><span>Coming to iOS</span></button></li>
+      </ul>
+      <p class="swipe">Swipe for more</p>
+      <div class="ctas">
+        <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Join us on Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="test" class="scene band center" aria-labelledby="test-title">
+    <div class="scene-bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker">Android &amp; iPhone</p>
+      <h2 class="display" id="test-title">Get early<span>access.</span></h2>
+      <div class="rule"></div>
       <p class="lead">Pick your phone, leave the email your app store uses, and we'll send your invite when testing opens.</p>
       <form class="signup" id="signup" novalidate>
         <h3>Test list</h3>
@@ -174,28 +378,83 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     </div>
   </section>
 
-  <section id="faq" aria-labelledby="faq-title">
-    <div class="wrap faq">
-      <h2 id="faq-title">Questions</h2>
-      <details><summary>When can I play?</summary><p>We're building and testing now. Test dates will be posted first on our Facebook page. Join the test list and we'll email you when testing opens.</p></details>
-      <details><summary>How will I get the test?</summary><p><b>Android:</b> we'll add your Google account to our Google Play test and email you a link. You install the game from the Play Store like any other app.</p><p><b>iPhone and iPad:</b> we'll send an invite to your Apple ID email. Install Apple's free TestFlight app, then open the invite to install the game.</p></details>
-      <details><summary>Which phones will be supported?</summary><p>We're testing on a wide range of Android phones and iPhones. Add your phone model when you join the list so we can include it.</p></details>
-      <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
+  <section id="faq" class="band" aria-labelledby="faq-title">
+    <div class="wrap">
+      <p class="kicker">FAQ</p>
+      <h2 class="display center" id="faq-title">May tanong<span>ka ba?</span></h2>
+      <div class="faq">
+        <details><summary>When can I play?</summary><p>We're building and testing now. Test dates will be posted first on our Facebook page. Join the test list and we'll email you when testing opens.</p></details>
+        <details><summary>How will I get the test?</summary><p><b>Android:</b> we'll add your Google account to our Google Play test and email you a link. You install the game from the Play Store like any other app.</p><p><b>iPhone and iPad:</b> we'll send an invite to your Apple ID email. Install Apple's free TestFlight app, then open the invite to install the game.</p></details>
+        <details><summary>Which phones will be supported?</summary><p>We're testing on a wide range of Android phones and iPhones. Add your phone model when you join the list so we can include it.</p></details>
+        <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
+      </div>
     </div>
   </section>
 </main>
 <footer>
   <div class="wrap">
+    <a class="brand" href="#top" aria-label="BossRan Mobile home"><img src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile" loading="lazy"></a>
     <nav aria-label="Footer">
       <a href="privacy.html">Privacy policy</a>
       <a href="mailto:support@bossran.net">support@bossran.net</a>
       <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://bossran.net/">BossRan PC</a>
     </nav>
     <p>© 2026 BossRan Mobile. RAN Online and its characters and art belong to their respective owners. BossRan is an independent team and is not affiliated with the original publishers.</p>
   </div>
 </footer>
 
+<dialog class="lb" id="lb" aria-label="Poster">
+  <button class="close" type="button" aria-label="Close" data-lb="close"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption>
+      <b id="lb-title"></b>
+      <span class="nav">
+        <button type="button" aria-label="Previous poster" data-lb="-1"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+        <button type="button" aria-label="Next poster" data-lb="1"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+      </span>
+    </figcaption>
+  </figure>
+</dialog>
+
 <script>
+// Hero gameplay loop: stays on its still frame for visitors who ask for less motion
+const loop = document.getElementById('loop');
+const lessMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (lessMotion.matches) { loop.removeAttribute('autoplay'); loop.pause(); }
+
+// Teaser: big play button over the poster, then the native controls take over (with sound)
+const teaser = document.getElementById('teaser-video');
+const teaserPlay = document.getElementById('teaser-play');
+teaserPlay.addEventListener('click', () => { teaser.play(); });
+teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
+
+// Poster viewer
+const posterButtons = [...document.querySelectorAll('#poster-list button')];
+const lb = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+const lbTitle = document.getElementById('lb-title');
+let current = 0;
+function showPoster(i) {
+  current = (i + posterButtons.length) % posterButtons.length;
+  const b = posterButtons[current];
+  const thumb = b.querySelector('img');
+  lbImg.src = b.dataset.full;
+  lbImg.alt = thumb.alt;
+  lbTitle.textContent = b.querySelector('span').textContent;
+}
+posterButtons.forEach((b, i) => b.addEventListener('click', () => { showPoster(i); lb.showModal(); }));
+lb.addEventListener('click', (e) => {
+  const action = e.target.closest('[data-lb]')?.dataset.lb;
+  if (action === 'close' || e.target === lb) lb.close();
+  else if (action) showPoster(current + Number(action));
+});
+lb.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') showPoster(current - 1);
+  if (e.key === 'ArrowRight') showPoster(current + 1);
+});
+
 // BossRan's own Google Apps Script web app URL from test-list/SETUP.md (ends in /exec).
 // While it's empty, the form explains that sign-up opens soon and sends nothing.
 const FORM_ENDPOINT = '';
