@@ -4,20 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BossRan Mobile</title>
-<meta name="description" content="BossRan Mobile is coming to Android and iOS. Follow us on Facebook for news and tester sign-ups.">
+<meta name="description" content="BossRan Mobile is coming to Android and iOS. Join the test list and we'll email you when testing opens on your phone.">
 <meta name="theme-color" content="#0d0806">
+<link rel="icon" href="icons/favicon-32x32.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
 :root {
   --bg: #0d0806;
   --panel: #1a100b;
+  --field: #120b08;
   --border: rgba(232, 182, 76, .22);
   --gold: #e8b64c;
+  --gold-soft: #f4d48a;
   --red: #c8261e;
   --text: #f3ece2;
   --muted: rgba(243, 236, 226, .78);
+  --faint: rgba(243, 236, 226, .58);
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -28,12 +33,57 @@ body {
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
-main { flex: 1; display: flex; align-items: center; padding: 64px 0; }
+main { flex: 1; }
+.hero { padding: 72px 0 56px; }
 .tag { display: inline-block; margin: 0 0 16px; padding: 4px 12px; border: 1px solid var(--red); border-radius: 999px; color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 h1 { margin: 0 0 12px; color: var(--gold); font-size: clamp(36px, 10vw, 64px); line-height: 1.05; letter-spacing: .04em; text-transform: uppercase; }
-p { margin: 0 0 24px; color: var(--muted); font-size: 18px; max-width: 34ch; }
-.btn { display: inline-block; padding: 14px 22px; background: var(--red); border-radius: 10px; color: #fff; font-weight: 700; text-decoration: none; }
+h2 { margin: 0 0 8px; color: var(--gold); font-size: clamp(26px, 7vw, 36px); line-height: 1.1; letter-spacing: .04em; text-transform: uppercase; }
+.lead { margin: 0 0 24px; color: var(--muted); font-size: 18px; max-width: 34ch; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; padding: 0 22px; background: var(--red); border: 1px solid var(--red); border-radius: 10px; color: #fff; font: 700 16px/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer; }
 .btn:hover { filter: brightness(1.1); }
+.btn:disabled { opacity: .6; cursor: progress; }
+.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+.btn svg { width: 18px; height: 18px; }
+.btn-block { width: 100%; }
+section { padding: 48px 0; border-top: 1px solid var(--border); }
+
+/* Test list sign-up (same fields as the EP7 mobile site; posts to BossRan's own Google Sheet) */
+.signup { margin-top: 24px; padding: 24px 18px; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; display: grid; gap: 16px; }
+.signup h3 { margin: 0; color: var(--gold-soft); font-size: 20px; letter-spacing: .04em; text-transform: uppercase; }
+.signup label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.signup input, .signup select { font: 16px inherit; font-family: inherit; color: var(--text); background: var(--field); border: 1px solid var(--border); border-radius: 10px; min-height: 52px; padding: 0 14px; width: 100%; appearance: none; -webkit-appearance: none; }
+.signup select { background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
+.signup input:focus, .signup select:focus { border-color: var(--gold); outline: none; }
+.signup small { font-size: 13px; line-height: 1.45; color: var(--faint); }
+.signup .row2 { display: grid; gap: 16px; }
+.signup .group { display: grid; gap: 16px; }
+.signup .group[hidden] { display: none; }
+.signup .check { display: flex; gap: 10px; align-items: flex-start; }
+.signup .check input { min-height: 0; width: 20px; height: 20px; margin: 2px 0 0; flex: none; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--red); }
+.signup .check a, .faq a { color: var(--gold); }
+.signup .fine { margin: 0; font-size: 13px; color: var(--faint); text-align: center; }
+.platform { border: 0; margin: 0; padding: 0; min-width: 0; }
+.platform legend { padding: 0; margin-bottom: 6px; font-size: 14px; color: var(--muted); }
+.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.signup .seg input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; min-height: 0; margin: 0; padding: 0; border: 0; opacity: 0; pointer-events: none; }
+.seg label { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg label svg { width: 18px; height: 18px; }
+.seg input:checked + label { background: var(--red); color: #fff; }
+.seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: -2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-msg { margin: 0; padding: 12px 14px; font-size: 15px; background: var(--field); border: 1px solid var(--border); border-radius: 10px; }
+.form-msg.ok { border-color: rgba(127, 212, 155, .6); }
+.form-msg.err { border-color: rgba(255, 138, 122, .7); }
+@media (min-width: 640px) {
+  .signup { padding: 32px; }
+  .signup .row2 { grid-template-columns: 1fr 1fr; }
+}
+
+.faq details { border-bottom: 1px solid var(--border); }
+.faq summary { padding: 16px 0; font-weight: 700; cursor: pointer; }
+.faq p { margin: 0 0 16px; color: var(--muted); }
+
 footer { border-top: 1px solid var(--border); padding: 24px 0 40px; color: var(--muted); font-size: 13px; }
 footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
 footer a { color: var(--text); text-decoration: none; }
@@ -41,13 +91,98 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8.5V6.8c0-.8.5-1 .9-1H17V2.1L14.1 2C10.9 2 10.2 4.4 10.2 6v2.5H8V12h2.2v10H14V12h2.8l.4-3.5H14z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1zM13.9 4.9c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.4-.6 3.1-1.5z"/></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22a11.5 11.5 0 0 0-9.84 0L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></symbol>
+  </defs>
+</svg>
+
 <main>
-  <div class="wrap">
-    <span class="tag">Coming soon</span>
-    <h1>BossRan Mobile</h1>
-    <p>Classic BossRan, built for Android and iOS. News and tester sign-ups are posted on our Facebook page.</p>
-    <a class="btn" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Follow on Facebook</a>
+  <div class="hero">
+    <div class="wrap">
+      <span class="tag">Coming soon</span>
+      <h1>BossRan Mobile</h1>
+      <p class="lead">Classic BossRan, built for Android and iOS. Join the test list and we'll email you when testing opens on your phone.</p>
+      <div class="ctas">
+        <a class="btn" href="#signup">Join the test list</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Follow on Facebook</a>
+      </div>
+    </div>
   </div>
+
+  <section id="test" aria-labelledby="test-title">
+    <div class="wrap">
+      <h2 id="test-title">Get early access</h2>
+      <p class="lead">Pick your phone, leave the email your app store uses, and we'll send your invite when testing opens.</p>
+      <form class="signup" id="signup" novalidate>
+        <h3>Test list</h3>
+        <fieldset class="platform">
+          <legend>Your phone</legend>
+          <div class="seg">
+            <input type="radio" name="platform" id="p-android" value="android" checked>
+            <label for="p-android"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</label>
+            <input type="radio" name="platform" id="p-ios" value="ios">
+            <label for="p-ios"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone / iPad</label>
+          </div>
+        </fieldset>
+        <label for="f-name">Facebook name
+          <input id="f-name" name="name" autocomplete="nickname" required maxlength="60">
+        </label>
+        <div class="group" data-platform="android">
+          <label for="f-a-email">Google account email
+            <input id="f-a-email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" inputmode="email" autocomplete="email" required maxlength="120" placeholder="name@gmail.com">
+            <small>The Gmail signed in to the Play Store on your phone. Google Play only lets us invite testers by this email.</small>
+          </label>
+          <div class="row2">
+            <label for="f-a-model">Phone model
+              <input id="f-a-model" name="model" required maxlength="60" placeholder="e.g. Redmi Note 13">
+            </label>
+            <label for="f-a-ver">Android version
+              <select id="f-a-ver" name="os_version" required>
+                <option value="">Choose one</option>
+                <option>16 or newer</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11 or older</option><option>Not sure</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="group" data-platform="ios" hidden>
+          <label for="f-i-email">Apple ID email
+            <input id="f-i-email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" inputmode="email" autocomplete="email" required maxlength="120" placeholder="name@icloud.com" disabled>
+            <small>The email you use for the App Store. Your TestFlight invite goes here.</small>
+          </label>
+          <div class="row2">
+            <label for="f-i-model">iPhone or iPad model
+              <input id="f-i-model" name="model" required maxlength="60" placeholder="e.g. iPhone 13" disabled>
+            </label>
+            <label for="f-i-ver">iOS version
+              <select id="f-i-ver" name="os_version" required disabled>
+                <option value="">Choose one</option>
+                <option>iOS 26 or newer</option><option>iOS 18</option><option>iOS 17</option><option>iOS 16 or older</option><option>Not sure</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
+        <label class="check" for="f-consent"><input id="f-consent" name="consent" type="checkbox" value="yes" required>
+          <span>Email me about the mobile test. I've read the <a href="privacy.html">privacy policy</a>.</span></label>
+        <button class="btn btn-block" type="submit">Join the test list</button>
+        <p class="fine">Joining the list doesn't create a game account or guarantee a spot. We'll choose testers across many kinds of phones.</p>
+        <p class="form-msg" id="form-msg" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <h2 id="faq-title">Questions</h2>
+      <details><summary>When can I play?</summary><p>We're building and testing now. Test dates will be posted first on our Facebook page. Join the test list and we'll email you when testing opens.</p></details>
+      <details><summary>How will I get the test?</summary><p><b>Android:</b> we'll add your Google account to our Google Play test and email you a link. You install the game from the Play Store like any other app.</p><p><b>iPhone and iPad:</b> we'll send an invite to your Apple ID email. Install Apple's free TestFlight app, then open the invite to install the game.</p></details>
+      <details><summary>Which phones will be supported?</summary><p>We're testing on a wide range of Android phones and iPhones. Add your phone model when you join the list so we can include it.</p></details>
+      <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
+    </div>
+  </section>
 </main>
 <footer>
   <div class="wrap">
@@ -59,5 +194,76 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <p>© 2026 BossRan Mobile. RAN Online and its characters and art belong to their respective owners. BossRan is an independent team and is not affiliated with the original publishers.</p>
   </div>
 </footer>
+
+<script>
+// BossRan's own Google Apps Script web app URL from test-list/SETUP.md (ends in /exec).
+// While it's empty, the form explains that sign-up opens soon and sends nothing.
+const FORM_ENDPOINT = '';
+
+// Sign-up form: Android and iPhone collect different emails (Google Play tests invite by Google account, TestFlight by Apple ID)
+const form = document.getElementById('signup');
+const msg = document.getElementById('form-msg');
+function say(text, kind) { msg.textContent = text; msg.className = `form-msg ${kind || ''}`; msg.hidden = false; }
+
+function platform() { return form.querySelector('input[name="platform"]:checked').value; }
+function showPlatform() {
+  const current = platform();
+  form.querySelectorAll('.group').forEach((g) => {
+    const on = g.dataset.platform === current;
+    g.hidden = !on;
+    g.querySelectorAll('input, select').forEach((el) => { el.disabled = !on; });
+  });
+  msg.hidden = true;
+}
+form.querySelectorAll('input[name="platform"]').forEach((r) => r.addEventListener('change', showPlatform));
+showPlatform();
+
+const PROBLEMS = {
+  'f-name': 'Enter your Facebook name.',
+  'f-a-email': 'Enter the Google account email from your Play Store.',
+  'f-i-email': 'Enter your Apple ID email.',
+  'f-a-model': 'Enter your phone model.',
+  'f-i-model': 'Enter your iPhone or iPad model.',
+  'f-a-ver': 'Choose your Android version.',
+  'f-i-ver': 'Choose your iOS version.',
+  'f-consent': 'Tick the box so we can email you about the test.',
+};
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!form.checkValidity()) {
+    const bad = form.querySelector(':invalid:not(fieldset)');
+    const emailTypo = bad.type === 'email' && bad.value;
+    say(emailTypo ? 'That email address doesn\'t look right. Check it and try again.' : PROBLEMS[bad.id] || 'Fill in the highlighted field.', 'err');
+    bad.focus();
+    return;
+  }
+  if (!FORM_ENDPOINT) {
+    say("Sign-up opens soon. Follow our Facebook page and we'll post the moment it does.", '');
+    return;
+  }
+  const data = Object.fromEntries(new FormData(form));
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  try {
+    // text/plain keeps this a "simple" request, which Google Apps Script accepts without a CORS preflight.
+    const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+    const res = await r.json();
+    if (!res.ok) throw new Error(res.error || r.status);
+    const ios = data.platform === 'ios';
+    form.reset();
+    showPlatform();
+    say(res.duplicate
+      ? "You're already on the list. We'll be in touch when testing opens."
+      : ios
+        ? "You're on the list. When testing opens, your TestFlight invite goes to your Apple ID email."
+        : "You're on the list. When testing opens, we'll email your Google account a link to the Play Store test.", 'ok');
+  } catch (err) {
+    say("That didn't go through. Check your connection and try again, or message our Facebook page.", 'err');
+  } finally {
+    button.disabled = false;
+  }
+});
+</script>
 </body>
 </html>
