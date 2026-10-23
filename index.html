@@ -78,7 +78,7 @@ h2.display { font-size: clamp(38px, 9vw, 72px); }
 
 /* Gameplay backdrop: blurred footage, dark wash, warm glow, drifting gold bokeh */
 .scene { position: relative; isolation: isolate; overflow: hidden; }
-.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/hero-v3.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
+.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/gameplay-v4.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
 .scene::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 50% at 50% 62%, rgba(247, 170, 60, .24), rgba(247, 170, 60, 0) 70%), linear-gradient(180deg, rgba(13, 10, 7, .55) 0, rgba(13, 10, 7, .7) 45%, var(--ground) 100%); }
 .bokeh { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .bokeh i { position: absolute; bottom: -40px; width: var(--s); height: var(--s); border-radius: 50%; background: radial-gradient(circle, rgba(255, 205, 110, .55), rgba(255, 205, 110, 0) 70%); animation: drift var(--d) linear infinite; animation-delay: var(--t); }
@@ -88,10 +88,14 @@ h2.display { font-size: clamp(38px, 9vw, 72px); }
 .hero { padding: 48px 0 40px; text-align: center; }
 .hero-logo { width: min(290px, 64%); margin: 0 auto 18px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5)); }
 
-/* Teaser v3 gameplay loop: the hand-held phone shot, cut below the teaser's captions, edges faded into the page */
-.hero-clip { position: relative; width: calc(100% + var(--gutter) * 2); max-width: 1080px; margin: 30px 0 0 calc(var(--gutter) * -1); aspect-ratio: 1280 / 616; }
-@media (min-width: 1112px) { .hero-clip { width: 100%; margin-left: 0; } }
-.hero-clip video { width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 3%, #000 80%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 3%, #000 80%, transparent); mask-composite: intersect; }
+/* Phone in two hands (teaser skill art) with the raw gameplay footage playing on its screen */
+.rig-crop { width: calc(100% + var(--gutter) * 2); max-width: 1000px; margin: 30px 0 0 calc(var(--gutter) * -1); aspect-ratio: 1700 / 960; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
+@media (min-width: 1032px) { .rig-crop { width: 100%; margin-left: auto; margin-right: auto; } }
+.rig { position: relative; width: 100%; aspect-ratio: 1700 / 1150; animation: sway 6.5s ease-in-out infinite; transform-origin: 50% 40%; }
+@keyframes sway { 0%, 100% { transform: translateY(0) rotate(-.7deg); } 50% { transform: translateY(-6px) rotate(.7deg); } }
+.rig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.rig .screen { position: absolute; left: 15.294%; top: 12%; width: 69.412%; height: 47.478%; border-radius: 3.9% / 8.42%; overflow: hidden; background: #000; }
+.rig .screen video { width: 100%; height: 100%; object-fit: cover; }
 .note { margin: 10px 0 0; color: var(--faint); font-size: 13px; }
 
 .stores { margin-top: 30px; }
@@ -199,7 +203,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .bokeh i { animation: none; }
+  .rig, .bokeh i { animation: none; }
   .bokeh { display: none; }
 }
 </style>
@@ -253,8 +257,12 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         <a class="btn" href="#signup">Join the test list</a>
         <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Follow on Facebook</a>
       </div>
-      <figure class="hero-clip">
-        <video id="loop" src="assets/hero-v3.mp4" poster="assets/hero-v3.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay on a phone held in two hands: a character fighting a crowd of monsters in a forest field"></video>
+      <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
+        <div class="rig">
+          <img src="assets/stage-under.svg" alt="">
+          <div class="screen"><video id="loop" src="assets/gameplay-v4.mp4" poster="assets/gameplay-v4.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay: a character fighting a crowd of monsters in a forest field"></video></div>
+          <img src="assets/stage-over.svg" alt="">
+        </div>
       </figure>
       <p class="note">Real gameplay from the BossRan Mobile test build.</p>
       <div class="stores">
