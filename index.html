@@ -78,7 +78,7 @@ h2.display { font-size: clamp(38px, 9vw, 72px); }
 
 /* Gameplay backdrop: blurred footage, dark wash, warm glow, drifting gold bokeh */
 .scene { position: relative; isolation: isolate; overflow: hidden; }
-.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/gameplay-loop.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
+.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/hero-v3.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
 .scene::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 50% at 50% 62%, rgba(247, 170, 60, .24), rgba(247, 170, 60, 0) 70%), linear-gradient(180deg, rgba(13, 10, 7, .55) 0, rgba(13, 10, 7, .7) 45%, var(--ground) 100%); }
 .bokeh { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .bokeh i { position: absolute; bottom: -40px; width: var(--s); height: var(--s); border-radius: 50%; background: radial-gradient(circle, rgba(255, 205, 110, .55), rgba(255, 205, 110, 0) 70%); animation: drift var(--d) linear infinite; animation-delay: var(--t); }
@@ -88,14 +88,10 @@ h2.display { font-size: clamp(38px, 9vw, 72px); }
 .hero { padding: 48px 0 40px; text-align: center; }
 .hero-logo { width: min(290px, 64%); margin: 0 auto 18px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5)); }
 
-/* Phone in two hands with live gameplay on screen (same art as the teaser) */
-.rig-crop { width: calc(100% + var(--gutter) * 2); max-width: 1000px; margin: 34px auto 0; margin-left: calc(var(--gutter) * -1); aspect-ratio: 1700 / 960; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
-@media (min-width: 1032px) { .rig-crop { margin-left: auto; width: 100%; } }
-.rig { position: relative; width: 100%; aspect-ratio: 1700 / 1150; animation: sway 6.5s ease-in-out infinite; transform-origin: 50% 40%; }
-@keyframes sway { 0%, 100% { transform: translateY(0) rotate(-.7deg); } 50% { transform: translateY(-6px) rotate(.7deg); } }
-.rig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-.rig .screen { position: absolute; left: 15.294%; top: 12%; width: 69.412%; height: 47.478%; border-radius: 3.9% / 8.42%; overflow: hidden; background: #000; }
-.rig .screen video { width: 100%; height: 100%; object-fit: cover; }
+/* Teaser v3 gameplay loop: the hand-held phone shot, cut below the teaser's captions, edges faded into the page */
+.hero-clip { position: relative; width: calc(100% + var(--gutter) * 2); max-width: 1080px; margin: 30px 0 0 calc(var(--gutter) * -1); aspect-ratio: 1280 / 616; }
+@media (min-width: 1112px) { .hero-clip { width: 100%; margin-left: 0; } }
+.hero-clip video { width: 100%; height: 100%; object-fit: cover; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 3%, #000 80%, transparent); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 3%, #000 80%, transparent); mask-composite: intersect; }
 .note { margin: 10px 0 0; color: var(--faint); font-size: 13px; }
 
 .stores { margin-top: 30px; }
@@ -203,7 +199,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .rig, .bokeh i { animation: none; }
+  .bokeh i { animation: none; }
   .bokeh { display: none; }
 }
 </style>
@@ -257,14 +253,10 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         <a class="btn" href="#signup">Join the test list</a>
         <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Follow on Facebook</a>
       </div>
-      <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
-        <div class="rig">
-          <img src="assets/stage-under.svg" alt="">
-          <div class="screen"><video id="loop" src="assets/gameplay-loop.mp4" poster="assets/gameplay-loop.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay: a character running through the practice yard"></video></div>
-          <img src="assets/stage-over.svg" alt="">
-        </div>
+      <figure class="hero-clip">
+        <video id="loop" src="assets/hero-v3.mp4" poster="assets/hero-v3.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay on a phone held in two hands: a character fighting a crowd of monsters in a forest field"></video>
       </figure>
-      <p class="note">Real gameplay from the BossRan Mobile iPhone simulator build.</p>
+      <p class="note">Real gameplay from the BossRan Mobile test build.</p>
       <div class="stores">
         <p id="stores-label">Coming soon to</p>
         <div class="badges" aria-describedby="stores-label">
@@ -488,6 +480,42 @@ const PROBLEMS = {
   'f-consent': 'Tick the box so we can email you about the test.',
 };
 
+// Extra email checks before anything is sent: Gmail's naming rules, common domain typos, and whether the
+// email's domain exists (asks Google Public DNS; only the part after @ is sent). Real addresses always pass.
+const TYPOS = {
+  'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gnail.com': 'gmail.com',
+  'gmaill.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.con': 'gmail.com', 'gmail.cm': 'gmail.com', 'gmail.om': 'gmail.com',
+  'icloud.co': 'icloud.com', 'icloud.con': 'icloud.com', 'iclod.com': 'icloud.com', 'icould.com': 'icloud.com',
+};
+const KNOWN_DOMAINS = ['gmail.com', 'googlemail.com', 'icloud.com', 'me.com', 'mac.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
+
+function emailProblem(email) {
+  const [user, domain] = email.toLowerCase().split('@');
+  if (TYPOS[domain]) return `Did you mean ${user}@${TYPOS[domain]}? Check your email and try again.`;
+  if (domain === 'gmail.com' || domain === 'googlemail.com') {
+    const letters = user.replace(/\./g, '');
+    if (!/^[a-z0-9][a-z0-9.]*$/.test(user) || /\.\.|\.$/.test(user) || letters.length < 6 || letters.length > 30) {
+      return "That isn't a real Gmail address. Gmail names are 6 to 30 letters, numbers or dots. Check it and try again.";
+    }
+  }
+  return '';
+}
+
+// True only when DNS says the domain can't receive email. If the check itself fails, the sign-up goes through.
+async function domainMissing(domain) {
+  if (KNOWN_DOMAINS.includes(domain)) return false;
+  const ask = async (type) => (await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${type}`, { signal: AbortSignal.timeout(4000) })).json();
+  try {
+    const mx = await ask('MX');
+    if (mx.Status === 3) return true;
+    if (mx.Status !== 0 || (mx.Answer || []).length) return false;
+    const a = await ask('A');
+    return a.Status === 3 || (a.Status === 0 && !(a.Answer || []).length);
+  } catch (err) {
+    return false;
+  }
+}
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (!form.checkValidity()) {
@@ -495,6 +523,15 @@ form.addEventListener('submit', async (e) => {
     const emailTypo = bad.type === 'email' && bad.value;
     say(emailTypo ? 'That email address doesn\'t look right. Check it and try again.' : PROBLEMS[bad.id] || 'Fill in the highlighted field.', 'err');
     bad.focus();
+    return;
+  }
+  const emailInput = form.querySelector('input[name="email"]:not(:disabled)');
+  const email = emailInput.value.trim().toLowerCase();
+  const domain = email.split('@')[1];
+  const problem = emailProblem(email);
+  if (problem) {
+    say(problem, 'err');
+    emailInput.focus();
     return;
   }
   if (!FORM_ENDPOINT) {
@@ -505,9 +542,19 @@ form.addEventListener('submit', async (e) => {
   const button = form.querySelector('button[type="submit"]');
   button.disabled = true;
   try {
+    if (await domainMissing(domain)) {
+      say(`We couldn't find the email provider "@${domain}". Check your email and try again.`, 'err');
+      emailInput.focus();
+      return;
+    }
     // text/plain keeps this a "simple" request, which Google Apps Script accepts without a CORS preflight.
     const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
     const res = await r.json();
+    if (!res.ok && res.error === 'email') {
+      say("That email address doesn't look right. Check it and try again.", 'err');
+      emailInput.focus();
+      return;
+    }
     if (!res.ok) throw new Error(res.error || r.status);
     const ios = data.platform === 'ios';
     form.reset();
