@@ -534,8 +534,40 @@ async function domainMissing(domain) {
   }
 }
 
+// A retry is safe: the service checks email + platform while holding the sheet lock.
+async function submitSignup(data) {
+  let lastError;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
+    try {
+      // text/plain avoids a CORS preflight with the Apps Script web app.
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data), signal: controller.signal,
+      });
+      if (!response.ok) throw new Error('server');
+      const result = await response.json();
+      if (!result || typeof result.ok !== 'boolean') throw new Error('server');
+      if (result.ok || (result.error !== 'busy' && result.error !== 'server')) return result;
+      throw new Error(result.error);
+    } catch (err) {
+      lastError = err;
+    } finally {
+      clearTimeout(timeout);
+    }
+    if (attempt < 2) {
+      say('Registration is taking a little longer. Retrying automatically…', '');
+      await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1) + Math.random() * 500));
+    }
+  }
+  throw lastError;
+}
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const button = form.querySelector('button[type="submit"]');
+  if (button.disabled) return;
   if (!form.checkValidity()) {
     const bad = form.querySelector(':invalid:not(fieldset)');
     const emailTypo = bad.type === 'email' && bad.value;
@@ -557,23 +589,25 @@ form.addEventListener('submit', async (e) => {
     return;
   }
   const data = Object.fromEntries(new FormData(form));
-  const button = form.querySelector('button[type="submit"]');
   button.disabled = true;
+  say('Submitting your registration…', '');
   try {
     if (await domainMissing(domain)) {
       say(`We couldn't find the email provider "@${domain}". Check your email and try again.`, 'err');
       emailInput.focus();
       return;
     }
-    // text/plain keeps this a "simple" request, which Google Apps Script accepts without a CORS preflight.
-    const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
-    const res = await r.json();
+    const res = await submitSignup(data);
     if (!res.ok && res.error === 'email') {
       say("That email address doesn't look right. Check it and try again.", 'err');
       emailInput.focus();
       return;
     }
-    if (!res.ok) throw new Error(res.error || r.status);
+    if (!res.ok && ['platform', 'missing', 'consent'].includes(res.error)) {
+      say('Please check your phone details and the email consent box, then try again.', 'err');
+      return;
+    }
+    if (!res.ok) throw new Error(res.error || 'server');
     const ios = data.platform === 'ios';
     form.reset();
     showPlatform();
@@ -583,7 +617,9 @@ form.addEventListener('submit', async (e) => {
         ? "You're on the list. When testing opens, your TestFlight invite goes to your Apple ID email."
         : "You're on the list. When testing opens, we'll email your Google account a link to the Play Store test.", 'ok');
   } catch (err) {
-    say("That didn't go through. Check your connection and try again, or message our Facebook page.", 'err');
+    say(err.message === 'busy'
+      ? 'Registration is busy right now. Your details are still here. Please try again in a moment.'
+      : "We couldn't confirm your registration. Your details are still here. Please try again; you won't be added twice. If it continues, message our Facebook page.", 'err');
   } finally {
     button.disabled = false;
   }
