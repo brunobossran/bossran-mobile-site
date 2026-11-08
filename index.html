@@ -86,6 +86,7 @@ h2.display { font-size: clamp(38px, 9vw, 72px); }
 
 /* Hero */
 .hero { padding: 48px 0 40px; text-align: center; }
+.platform-choice .btn { min-width: 118px; padding-inline: 14px; }
 .hero-logo { width: min(290px, 64%); margin: 0 auto 18px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5)); }
 
 /* Phone in two hands (teaser skill art) with the raw gameplay footage playing on its screen */
@@ -227,9 +228,10 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <p class="kicker">Mobile closed beta</p>
       <h1 class="display">Back to RAN.<span>Anywhere.</span></h1>
       <p class="lead">Classic BossRan, built for your phone. Play the closed beta on Android and iPhone.</p>
-      <div class="ctas">
-        <a class="btn" href="#test">Beta access</a>
-      </div>
+      <nav class="ctas platform-choice" aria-label="Choose your beta platform">
+        <a class="btn" href="#android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
+        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG"><svg aria-hidden="true"><use href="#i-apple"/></svg>Apple</a>
+      </nav>
       <nav class="ctas" aria-label="Follow BossRan Mobile">
         <a class="btn btn-ghost" href="https://discord.gg/xVfgwdGqQV" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-discord"/></svg>Discord</a>
         <a class="btn btn-ghost" href="https://www.facebook.com/groups/bossranmobile" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook Group</a>
