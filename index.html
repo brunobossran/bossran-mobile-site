@@ -49,7 +49,7 @@ a { color: var(--gold); }
 .display { margin: 0; color: var(--text); font-weight: 900; font-style: italic; line-height: .94; letter-spacing: -.01em; text-transform: uppercase; text-shadow: 0 6px 28px rgba(0, 0, 0, .55); }
 .display span { display: block; color: var(--gold); }
 h1.display { font-size: clamp(48px, 13vw, 112px); }
-h2.display { font-size: clamp(38px, 9vw, 72px); }
+h2.display { font-size: clamp(32px, 9vw, 72px); }
 .rule { width: 160px; height: 3px; margin: 22px auto 0; background: linear-gradient(90deg, rgba(247, 196, 72, 0), var(--gold), rgba(247, 196, 72, 0)); }
 .lead { margin: 20px auto 0; max-width: 40ch; color: var(--muted); font-size: 18px; }
 .center { text-align: center; }
@@ -151,10 +151,13 @@ section { padding: 72px 0; }
 .lb button svg { width: 20px; height: 20px; }
 .lb .close { position: absolute; top: -14px; right: -14px; background: var(--red); border-color: var(--red); color: #fff; }
 
-.beta-platforms { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,280px),1fr)); gap: 28px; max-width: 820px; margin: 28px auto 0; }
-.beta-platforms > div { padding: 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
-.beta-platforms h3 { margin: 0; }
-.beta-platforms p { color: var(--muted); line-height: 1.5; }
+.android-steps { display: none; max-width: 440px; margin: 20px auto 0; padding: 20px; text-align: left; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+.android-steps:target { display: block; }
+.android-steps h2 { margin: 0; color: var(--text); font-size: 22px; }
+.android-steps p { margin: 6px 0 16px; color: var(--muted); line-height: 1.45; }
+.android-steps p:last-child { margin-bottom: 0; }
+.android-steps .btn { width: 100%; }
+.beta-help { display: inline-block; padding: 12px; font-size: 14px; }
 .faq { max-width: 760px; margin: 28px auto 0; text-align: left; }
 .faq details { border-bottom: 1px solid var(--border); }
 .faq summary { padding: 18px 0; color: var(--text); font-weight: 800; cursor: pointer; }
@@ -205,7 +208,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <nav aria-label="Main">
       <a href="#teaser">Teaser</a>
       <a href="#posters">Posters</a>
-      <a href="#test">Closed beta</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="btn join" href="#test">Beta access</a>
@@ -227,16 +229,20 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
       <p class="kicker">Mobile closed beta</p>
       <h1 class="display">Back to RAN.<span>Anywhere.</span></h1>
-      <p class="lead">Classic BossRan, built for your phone. Play the closed beta on Android and iPhone.</p>
-      <nav class="ctas platform-choice" aria-label="Choose your beta platform">
-        <a class="btn" href="#android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
-        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG"><svg aria-hidden="true"><use href="#i-apple"/></svg>Apple</a>
+      <p id="test" class="lead">Choose your device to join the beta.</p>
+      <nav id="signup" class="ctas platform-choice" aria-label="Choose your beta platform">
+        <a class="btn" href="#android-beta" aria-controls="android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
+        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG" aria-label="Apple — join with TestFlight"><svg aria-hidden="true"><use href="#i-apple"/></svg>Apple</a>
       </nav>
-      <nav class="ctas" aria-label="Follow BossRan Mobile">
-        <a class="btn btn-ghost" href="https://discord.gg/xVfgwdGqQV" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-discord"/></svg>Discord</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/groups/bossranmobile" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook Group</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook Page</a>
-      </nav>
+      <div id="android-beta" class="android-steps" tabindex="-1" role="region" aria-labelledby="android-title">
+        <h2 id="android-title">Join the Android beta</h2>
+        <p>Use the same Google account for both steps. To find yours, tap your profile picture in the Play Store.</p>
+        <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
+        <p>Tap <strong>Join group</strong> in Google Groups, then return here.</p>
+        <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Join on Google Play</a>
+        <p>Accept the test, then follow the Google Play link to install. Already invited by email? Start at step 2 with that address.</p>
+      </div>
+      <a class="beta-help" href="#faq">Need help?</a>
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
         <div class="rig">
           <img src="assets/stage-under.svg" alt="">
@@ -281,32 +287,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         <li><button type="button" data-full="assets/posters/06-ios-iphone-focus.jpg"><img src="assets/posters/06-ios-iphone-focus-sm.jpg" width="576" height="720" loading="lazy" alt="Poster: coming soon to iOS. BossRan on iPhone. RAN on iPhone, almost here."><span>iPhone preview</span></button></li>
       </ul>
       <p class="swipe">Swipe for more</p>
-      <nav class="ctas" aria-label="BossRan Mobile socials">
-        <a class="btn btn-ghost" href="https://discord.gg/xVfgwdGqQV" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-discord"/></svg>Discord</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/groups/bossranmobile" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook Group</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook Page</a>
-      </nav>
-    </div>
-  </section>
-
-  <section id="test" class="scene band center" aria-labelledby="test-title">
-    <div class="scene-bg" aria-hidden="true"></div>
-    <div class="wrap">
-      <p class="kicker">Android &amp; iPhone</p>
-      <h2 class="display" id="test-title">Join the<span>closed beta.</span></h2>
-      <div class="rule"></div>
-      <div id="signup" class="beta-platforms">
-        <div><h3>iPhone &amp; iPad</h3>
-          <p>Open this link on your device and follow Apple’s TestFlight instructions.</p>
-          <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG">Join with TestFlight</a>
-        </div>
-        <div id="android-beta"><h3>Android</h3>
-          <p>Open the Play Store on your phone and tap your profile picture to see your email. Use that email for both steps. In Google Groups, tap <strong>Join group</strong>, then return here for step 2.</p>
-          <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
-          <a class="btn btn-ghost" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Join on Google Play</a>
-          <p>Already invited by email? Skip to step 2 and choose the address that received your invite. If you just joined the group, Play access opens after Google approves the community beta.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -315,7 +295,9 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <p class="kicker">FAQ</p>
       <h2 class="display center" id="faq-title">Got<span>questions?</span></h2>
       <div class="faq">
-        <details><summary>When can I play?</summary><p>The closed beta runs by invitation. Invited players can log in during test sessions. Check our Discord for session updates.</p></details>
+        <details><summary>Do I need an email invite?</summary><p>You can join yourself. On Android, follow the <a href="#android-beta">two signup steps</a>. On iPhone or iPad, open the <a href="https://testflight.apple.com/join/b6cz2WRG">TestFlight invitation</a> on your device.</p></details>
+        <details><summary>Google Play says I’m ineligible. What do I do?</summary><p>Check which email you used to join the tester group. Open step 2 with that same email, then select it in the Play Store on your phone. <a href="#android-beta">Back to Android signup</a></p></details>
+        <details><summary>When can I play?</summary><p>Check <a href="https://discord.gg/xVfgwdGqQV">Discord</a> for play-session times.</p></details>
         <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
       </div>
     </div>
