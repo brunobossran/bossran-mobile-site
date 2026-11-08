@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>BossRan Mobile</title>
-<meta name="description" content="Closed beta sign-ups are open for BossRan Mobile. Request an invite for Android or iPhone.">
+<meta name="description" content="BossRan Mobile closed beta for Android and iPhone.">
 <meta name="theme-color" content="#0d0a07">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mobile.bossran.net/">
 <meta property="og:title" content="BossRan Mobile: Back to RAN. Anywhere.">
-<meta property="og:description" content="Request an invite to the BossRan Mobile closed beta on Android or iPhone.">
+<meta property="og:description" content="Explore the BossRan Mobile closed beta on Android and iPhone.">
 <meta property="og:image" content="https://mobile.bossran.net/assets/teaser-v3-poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icons/favicon-32x32.png" type="image/png">
@@ -150,44 +150,6 @@ section { padding: 72px 0; }
 .lb button svg { width: 20px; height: 20px; }
 .lb .close { position: absolute; top: -14px; right: -14px; background: var(--red); border-color: var(--red); color: #fff; }
 
-/* Test list sign-up (same fields as the EP7 mobile site; posts to BossRan's own Google Sheet) */
-.signup { max-width: 680px; margin: 36px auto 0; padding: 24px 18px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 18px; display: grid; gap: 16px; text-align: left; }
-.signup h3 { margin: 0; color: var(--gold); font-size: 20px; font-style: italic; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
-.signup label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
-.signup input, .signup select { font: 16px inherit; font-family: inherit; color: var(--text); background: var(--field); border: 1px solid var(--border); border-radius: 10px; min-height: 52px; padding: 0 14px; width: 100%; appearance: none; -webkit-appearance: none; }
-.signup select { background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
-.signup input:focus, .signup select:focus { border-color: var(--gold); outline: none; }
-.signup small { font-size: 13px; line-height: 1.45; color: var(--faint); }
-.signup .row2 { display: grid; gap: 16px; }
-.signup .group { display: grid; gap: 16px; }
-/* Phone model picker (assets/phone-models.js): list under the field that narrows as you type */
-.model-pick { position: relative; }
-.model-list { position: absolute; z-index: 15; left: 0; right: 0; top: calc(100% + 4px); margin: 0; padding: 6px 0; list-style: none; overflow-y: auto; overscroll-behavior: contain; background: var(--field); border: 1px solid var(--gold); border-radius: 10px; box-shadow: 0 14px 30px rgba(0, 0, 0, .6); }
-.model-list li { padding: 12px 14px; font-size: 16px; line-height: 1.25; color: var(--text); cursor: pointer; }
-.model-list li[aria-selected="true"], .model-list li[role="option"]:hover { background: var(--gold); color: var(--ground); }
-.model-list .model-brand { font-weight: 700; }
-.model-list .model-note { font-size: 13px; color: var(--faint); cursor: default; }
-.signup .group[hidden] { display: none; }
-.signup .check { display: flex; gap: 10px; align-items: flex-start; }
-.signup .check input { min-height: 0; width: 20px; height: 20px; margin: 2px 0 0; flex: none; appearance: auto; -webkit-appearance: checkbox; accent-color: var(--red); }
-.signup .fine { margin: 0; font-size: 13px; color: var(--faint); text-align: center; }
-.platform { border: 0; margin: 0; padding: 0; min-width: 0; }
-.platform legend { padding: 0; margin-bottom: 6px; font-size: 14px; color: var(--muted); }
-.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-.signup .seg input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; min-height: 0; margin: 0; padding: 0; border: 0; opacity: 0; pointer-events: none; }
-.seg label { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; font-size: 15px; font-weight: 700; color: var(--muted); cursor: pointer; }
-.seg label svg { width: 18px; height: 18px; }
-.seg input:checked + label { background: var(--red); color: #fff; }
-.seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: -2px; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form-msg { margin: 0; padding: 12px 14px; font-size: 15px; background: var(--field); border: 1px solid var(--border); border-radius: 10px; }
-.form-msg.ok { border-color: rgba(127, 212, 155, .6); }
-.form-msg.err { border-color: rgba(255, 138, 122, .7); }
-@media (min-width: 640px) {
-  .signup { padding: 32px; }
-  .signup .row2 { grid-template-columns: 1fr 1fr; }
-}
-
 .faq { max-width: 760px; margin: 28px auto 0; text-align: left; }
 .faq details { border-bottom: 1px solid var(--border); }
 .faq summary { padding: 18px 0; color: var(--text); font-weight: 800; cursor: pointer; }
@@ -238,10 +200,10 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <nav aria-label="Main">
       <a href="#teaser">Teaser</a>
       <a href="#posters">Posters</a>
-      <a href="#test">Beta sign-up</a>
+      <a href="#test">Closed beta</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn join" href="#signup">Join the test</a>
+    <a class="btn join" href="#test">Beta access</a>
   </div>
 </header>
 
@@ -258,11 +220,11 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     </div>
     <div class="wrap">
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
-      <p class="kicker">Closed beta sign-ups are open</p>
+      <p class="kicker">Mobile closed beta</p>
       <h1 class="display">Back to RAN.<span>Anywhere.</span></h1>
-      <p class="lead">Classic BossRan, built for your phone. Request an invite to test on Android or iPhone.</p>
+      <p class="lead">Classic BossRan, built for your phone. Play the closed beta on Android and iPhone.</p>
       <div class="ctas">
-        <a class="btn" href="#signup">Request a beta invite</a>
+        <a class="btn" href="#test">Beta access</a>
       </div>
       <nav class="ctas" aria-label="Follow BossRan Mobile">
         <a class="btn btn-ghost" href="https://discord.gg/xVfgwdGqQV" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-discord"/></svg>Discord</a>
@@ -327,64 +289,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <p class="kicker">Android &amp; iPhone</p>
       <h2 class="display" id="test-title">Get early<span>access.</span></h2>
       <div class="rule"></div>
-      <p class="lead">Choose your phone and enter the email you use for its app store. If selected, you’ll receive an invite at that address.</p>
-      <form class="signup" id="signup" novalidate>
-        <h3>Beta sign-up</h3>
-        <fieldset class="platform">
-          <legend>Your phone</legend>
-          <div class="seg">
-            <input type="radio" name="platform" id="p-android" value="android" checked>
-            <label for="p-android"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</label>
-            <input type="radio" name="platform" id="p-ios" value="ios">
-            <label for="p-ios"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone / iPad</label>
-          </div>
-        </fieldset>
-        <label for="f-name">Facebook name
-          <input id="f-name" name="name" autocomplete="nickname" required maxlength="60">
-        </label>
-        <div class="group" data-platform="android">
-          <label for="f-a-email">Google account email
-            <input id="f-a-email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" inputmode="email" autocomplete="email" required maxlength="120" placeholder="name@gmail.com">
-            <small>The Gmail signed in to the Play Store on your phone. Google Play only lets us invite testers by this email.</small>
-          </label>
-          <div class="row2">
-            <label for="f-a-model">Phone model
-              <input id="f-a-model" name="model" data-models="android" required maxlength="60" placeholder="Type your phone, e.g. Redmi Note 13">
-              <small>Start typing, then tap your phone in the list.</small>
-            </label>
-            <label for="f-a-ver">Android version
-              <select id="f-a-ver" name="os_version" required>
-                <option value="">Choose one</option>
-                <option>16 or newer</option><option>15</option><option>14</option><option>13</option><option>12</option><option>11 or older</option><option>Not sure</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <div class="group" data-platform="ios" hidden>
-          <label for="f-i-email">Apple ID email
-            <input id="f-i-email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" inputmode="email" autocomplete="email" required maxlength="120" placeholder="name@icloud.com" disabled>
-            <small>The email you use for the App Store. Your TestFlight invite goes here.</small>
-          </label>
-          <div class="row2">
-            <label for="f-i-model">iPhone or iPad model
-              <input id="f-i-model" name="model" data-models="ios" required maxlength="60" placeholder="Type your model, e.g. iPhone 13" disabled>
-              <small>Start typing, then tap your model in the list.</small>
-            </label>
-            <label for="f-i-ver">iOS version
-              <select id="f-i-ver" name="os_version" required disabled>
-                <option value="">Choose one</option>
-                <option>iOS 26 or newer</option><option>iOS 18</option><option>iOS 17</option><option>iOS 16 or older</option><option>Not sure</option>
-              </select>
-            </label>
-          </div>
-        </div>
-        <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
-        <label class="check" for="f-consent"><input id="f-consent" name="consent" type="checkbox" value="yes" required>
-          <span>Email me about the mobile test. I've read the <a href="privacy.html">privacy policy</a>.</span></label>
-        <button class="btn btn-block" type="submit">Request a beta invite</button>
-        <p class="fine">Joining the list doesn't create a game account or guarantee a spot. We'll choose testers across many kinds of phones.</p>
-        <p class="form-msg" id="form-msg" role="status" hidden></p>
-      </form>
+      <p class="lead" id="signup">Already invited? Open the Google Play or TestFlight invitation in your email to install BossRan Mobile.</p>
     </div>
   </section>
 
@@ -394,8 +299,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <h2 class="display center" id="faq-title">Got<span>questions?</span></h2>
       <div class="faq">
         <details><summary>When can I play?</summary><p>The closed beta runs by invitation. Invited players can log in during test sessions. Check our Discord for session updates.</p></details>
-        <details><summary>How will I get the test?</summary><p><b>Android:</b> if selected, you'll receive a Google Play test link for the account you signed up with. You install the game from the Play Store like any other app.</p><p><b>iPhone and iPad:</b> if selected, you'll receive a TestFlight invite at your Apple ID email. Install Apple's free TestFlight app, then open the invite to install the game.</p></details>
-        <details><summary>Which phones will be supported?</summary><p>We're testing on a wide range of Android phones and iPhones. Add your phone model when you join the list so we can include it.</p></details>
         <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
       </div>
     </div>
@@ -430,7 +333,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   </figure>
 </dialog>
 
-<script src="assets/phone-models.js?v=4"></script>
 <script>
 // Hero gameplay loop: stays on its still frame for visitors who ask for less motion
 const loop = document.getElementById('loop');
@@ -468,165 +370,6 @@ lb.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') showPoster(current + 1);
 });
 
-// BossRan's own Google Apps Script web app URL from test-list/SETUP.md (ends in /exec).
-// While it's empty, the form explains that sign-up opens soon and sends nothing.
-const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzxn6l3NQq5pJ8qcBje92WmzmqG4P--eAHpG589of6SGJIarppWPks8YbBvsUfkuYD00g/exec';
-
-// Sign-up form: Android and iPhone collect different emails (Google Play tests invite by Google account, TestFlight by Apple ID)
-const form = document.getElementById('signup');
-const msg = document.getElementById('form-msg');
-function say(text, kind) { msg.textContent = text; msg.className = `form-msg ${kind || ''}`; msg.hidden = false; }
-
-function platform() { return form.querySelector('input[name="platform"]:checked').value; }
-function showPlatform() {
-  const current = platform();
-  form.querySelectorAll('.group').forEach((g) => {
-    const on = g.dataset.platform === current;
-    g.hidden = !on;
-    g.querySelectorAll('input, select').forEach((el) => { el.disabled = !on; });
-  });
-  msg.hidden = true;
-}
-form.querySelectorAll('input[name="platform"]').forEach((r) => r.addEventListener('change', showPlatform));
-showPlatform();
-
-const PROBLEMS = {
-  'f-name': 'Enter your Facebook name.',
-  'f-a-email': 'Enter the Google account email from your Play Store.',
-  'f-i-email': 'Enter your Apple ID email.',
-  'f-a-model': 'Enter your phone model.',
-  'f-i-model': 'Enter your iPhone or iPad model.',
-  'f-a-ver': 'Choose your Android version.',
-  'f-i-ver': 'Choose your iOS version.',
-  'f-consent': 'Tick the box so we can email you about the test.',
-};
-
-// Extra email checks before anything is sent: Gmail's naming rules, common domain typos, and whether the
-// email's domain exists (asks Google Public DNS; only the part after @ is sent). Real addresses always pass.
-const TYPOS = {
-  'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gmal.com': 'gmail.com', 'gnail.com': 'gmail.com',
-  'gmaill.com': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.con': 'gmail.com', 'gmail.cm': 'gmail.com', 'gmail.om': 'gmail.com',
-  'icloud.co': 'icloud.com', 'icloud.con': 'icloud.com', 'iclod.com': 'icloud.com', 'icould.com': 'icloud.com',
-};
-const KNOWN_DOMAINS = ['gmail.com', 'googlemail.com', 'icloud.com', 'me.com', 'mac.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];
-
-function emailProblem(email) {
-  const [user, domain] = email.toLowerCase().split('@');
-  if (TYPOS[domain]) return `Did you mean ${user}@${TYPOS[domain]}? Check your email and try again.`;
-  if (domain === 'gmail.com' || domain === 'googlemail.com') {
-    const letters = user.replace(/\./g, '');
-    if (!/^[a-z0-9][a-z0-9.]*$/.test(user) || /\.\.|\.$/.test(user) || letters.length < 6 || letters.length > 30) {
-      return "That isn't a real Gmail address. Gmail names are 6 to 30 letters, numbers or dots. Check it and try again.";
-    }
-  }
-  return '';
-}
-
-// True only when DNS says the domain can't receive email. If the check itself fails, the sign-up goes through.
-async function domainMissing(domain) {
-  if (KNOWN_DOMAINS.includes(domain)) return false;
-  const ask = async (type) => (await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${type}`, { signal: AbortSignal.timeout(4000) })).json();
-  try {
-    const mx = await ask('MX');
-    if (mx.Status === 3) return true;
-    if (mx.Status !== 0 || (mx.Answer || []).length) return false;
-    const a = await ask('A');
-    return a.Status === 3 || (a.Status === 0 && !(a.Answer || []).length);
-  } catch (err) {
-    return false;
-  }
-}
-
-// A retry is safe: the service checks email + platform while holding the sheet lock.
-async function submitSignup(data) {
-  let lastError;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 25000);
-    try {
-      // text/plain avoids a CORS preflight with the Apps Script web app.
-      const response = await fetch(FORM_ENDPOINT, {
-        method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(data), signal: controller.signal,
-      });
-      if (!response.ok) throw new Error('server');
-      const result = await response.json();
-      if (!result || typeof result.ok !== 'boolean') throw new Error('server');
-      if (result.ok || (result.error !== 'busy' && result.error !== 'server')) return result;
-      throw new Error(result.error);
-    } catch (err) {
-      lastError = err;
-    } finally {
-      clearTimeout(timeout);
-    }
-    if (attempt < 2) {
-      say('Registration is taking a little longer. Retrying automatically…', '');
-      await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1) + Math.random() * 500));
-    }
-  }
-  throw lastError;
-}
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const button = form.querySelector('button[type="submit"]');
-  if (button.disabled) return;
-  if (!form.checkValidity()) {
-    const bad = form.querySelector(':invalid:not(fieldset)');
-    const emailTypo = bad.type === 'email' && bad.value;
-    say(emailTypo ? 'That email address doesn\'t look right. Check it and try again.' : PROBLEMS[bad.id] || 'Fill in the highlighted field.', 'err');
-    bad.focus();
-    return;
-  }
-  const emailInput = form.querySelector('input[name="email"]:not(:disabled)');
-  const email = emailInput.value.trim().toLowerCase();
-  const domain = email.split('@')[1];
-  const problem = emailProblem(email);
-  if (problem) {
-    say(problem, 'err');
-    emailInput.focus();
-    return;
-  }
-  if (!FORM_ENDPOINT) {
-    say("Sign-up opens soon. Follow our Facebook page and we'll post the moment it does.", '');
-    return;
-  }
-  const data = Object.fromEntries(new FormData(form));
-  button.disabled = true;
-  say('Submitting your registration…', '');
-  try {
-    if (await domainMissing(domain)) {
-      say(`We couldn't find the email provider "@${domain}". Check your email and try again.`, 'err');
-      emailInput.focus();
-      return;
-    }
-    const res = await submitSignup(data);
-    if (!res.ok && res.error === 'email') {
-      say("That email address doesn't look right. Check it and try again.", 'err');
-      emailInput.focus();
-      return;
-    }
-    if (!res.ok && ['platform', 'missing', 'consent'].includes(res.error)) {
-      say('Please check your phone details and the email consent box, then try again.', 'err');
-      return;
-    }
-    if (!res.ok) throw new Error(res.error || 'server');
-    const ios = data.platform === 'ios';
-    form.reset();
-    showPlatform();
-    say(res.duplicate
-      ? "You're already on the beta list."
-      : ios
-        ? "You're on the list. If selected, you'll receive a TestFlight invite at your Apple ID email."
-        : "You're on the list. If selected, you'll receive a Google Play test link at the email you provided.", 'ok');
-  } catch (err) {
-    say(err.message === 'busy'
-      ? 'Registration is busy right now. Your details are still here. Please try again in a moment.'
-      : "We couldn't confirm your registration. Your details are still here. Please try again; you won't be added twice. If it continues, message our Facebook page.", 'err');
-  } finally {
-    button.disabled = false;
-  }
-});
 </script>
 </body>
 </html>
