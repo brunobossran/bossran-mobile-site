@@ -86,7 +86,6 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 
 /* Hero */
 .hero { padding: 48px 0 40px; text-align: center; }
-.platform-choice .btn { min-width: 118px; padding-inline: 14px; }
 .hero-logo { width: min(290px, 64%); margin: 0 auto 18px; filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .5)); }
 
 /* Phone in two hands (teaser skill art) with the raw gameplay footage playing on its screen */
@@ -151,16 +150,26 @@ section { padding: 72px 0; }
 .lb button svg { width: 20px; height: 20px; }
 .lb .close { position: absolute; top: -14px; right: -14px; background: var(--red); border-color: var(--red); color: #fff; }
 
-.android-steps { display: none; max-width: 440px; margin: 20px auto 0; padding: 20px; text-align: left; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
+.install-picker { max-width: 420px; margin: 26px auto 0; padding: 20px; background: #191511; border: 1px solid var(--border); border-radius: 14px; text-align: left; }
+.install-picker .lead { margin: 0 0 12px; font-size: 16px; color: var(--text); font-weight: 650; }
+.install-picker .platform-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0; padding: 4px; background: #0e0c0a; border-radius: 8px; }
+.platform-choice a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; border-radius: 5px; color: var(--text-2); text-decoration: none; font-weight: 600; }
+.platform-choice svg { width: 18px; height: 18px; }
+.platform-choice a:hover, .install-picker:has(.android-steps:target) a[href="#android-beta"] { background: #372e21; color: var(--gold-soft); }
+.install-picker :is(a, summary):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.android-steps { display: none; scroll-margin-top: 120px; }
 .android-steps:target { display: block; }
-.android-steps h2 { margin: 0; color: var(--text); font-size: 22px; }
-.android-steps p { margin: 6px 0 16px; color: var(--muted); line-height: 1.45; }
-.android-steps p:last-child { margin-bottom: 0; }
-.android-steps details { border-top: 1px solid var(--border); margin-top: 12px; }
-.android-steps summary { cursor: pointer; padding: 14px 0; font-weight: 700; }
-.android-steps summary small { display: block; margin: 3px 0 0 18px; font-size: 14px; font-weight: 400; color: var(--muted); }
-.android-steps .btn { width: 100%; }
-.beta-help { display: inline-block; padding: 12px; font-size: 14px; }
+.android-steps:focus { outline: none; }
+.android-steps h2 { margin: 20px 0 7px; color: var(--text); font-size: 17px; }
+.android-steps details + details { border-top: 1px solid var(--border); }
+.android-steps summary { position: relative; list-style: none; padding: 12px 28px 12px 0; color: var(--text); font-weight: 650; cursor: pointer; line-height: 1.4; }
+.android-steps summary::-webkit-details-marker { display: none; }
+.android-steps summary::after { position: absolute; content: ""; right: 5px; top: 50%; width: 7px; height: 7px; border: solid var(--gold); border-width: 0 1.5px 1.5px 0; transform: translateY(-65%) rotate(45deg); }
+.android-steps details[open] summary::after { transform: rotate(225deg); }
+.android-steps small { display: block; color: var(--muted); font-size: 14px; font-weight: 400; }
+.android-steps p { margin: 4px 0 14px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.android-steps .btn { width: 100%; min-height: 44px; margin-bottom: 8px; background: #ad3026; border-radius: 6px; box-shadow: none; transform: none; text-transform: none; letter-spacing: normal; font-weight: 650; }
+.beta-help { display: inline-block; padding: 12px; color: var(--muted); font-size: 14px; }
 .faq { max-width: 760px; margin: 28px auto 0; text-align: left; }
 .faq details { border-bottom: 1px solid var(--border); }
 .faq summary { padding: 18px 0; color: var(--text); font-weight: 800; cursor: pointer; }
@@ -232,26 +241,28 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
       <p class="kicker">Mobile closed beta</p>
       <h1 class="display">Back to RAN.<span>Anywhere.</span></h1>
-      <p id="test" class="lead">Choose your device to join the beta.</p>
-      <nav id="signup" class="ctas platform-choice" aria-label="Choose your beta platform">
-        <a class="btn" href="#android-beta" aria-controls="android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
-        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG" aria-label="iPhone or iPad — join with TestFlight"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone / iPad</a>
-      </nav>
-      <div id="android-beta" class="android-steps" tabindex="-1" role="region" aria-labelledby="android-title">
-        <h2 id="android-title">Choose one way to install</h2>
-        <details name="android-install">
-          <summary>Direct APK <small>Download from BossRan</small></summary>
-          <a class="btn" href="https://downloads.bossran.net/android/alpha/bossran-2859-9b587d5bfe44c133.apk">Download APK</a>
-          <p>Open the file in <strong>Downloads</strong>. If prompted, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. Tap <strong>Install</strong>.</p>
-        </details>
-        <details name="android-install">
-          <summary>Google Play <small>Join the Play Store beta</small></summary>
-          <p>Use the same Google account as your Play Store for both steps. Already invited by email? Go to step 2 with that account.</p>
-          <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
-          <p>Tap <strong>Join group</strong>, then return here.</p>
-          <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Open Google Play</a>
-          <p>Tap <strong>Become a tester</strong>, then <strong>download it on Google Play</strong> and <strong>Install</strong>.</p>
-        </details>
+      <div class="install-picker" id="test">
+        <p class="lead">Choose your device</p>
+        <nav id="signup" class="ctas platform-choice" aria-label="Choose your beta platform">
+          <a href="#android-beta" aria-controls="android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
+          <a href="https://testflight.apple.com/join/b6cz2WRG" aria-label="iPhone or iPad — join with TestFlight"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone / iPad</a>
+        </nav>
+        <div id="android-beta" class="android-steps" tabindex="-1" role="region" aria-labelledby="android-title">
+          <h2 id="android-title">How do you want to install?</h2>
+          <details name="android-install">
+            <summary>Direct APK <small>Get the file directly from BossRan</small></summary>
+            <a class="btn" href="https://downloads.bossran.net/android/alpha/bossran-2859-9b587d5bfe44c133.apk">Download APK</a>
+            <p>Open the file in <strong>Downloads</strong>. If prompted, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. Tap <strong>Install</strong>.</p>
+          </details>
+          <details name="android-install">
+            <summary>Google Play <small>Join the Play Store beta</small></summary>
+            <p>Use the same Google account as your Play Store for both steps. Already invited by email? Go to step 2 with that account.</p>
+            <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
+            <p>Tap <strong>Join group</strong>, then return here.</p>
+            <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Open Google Play</a>
+            <p>Tap <strong>Become a tester</strong>, then <strong>download it on Google Play</strong> and <strong>Install</strong>.</p>
+          </details>
+        </div>
       </div>
       <a class="beta-help" href="#faq">Need help?</a>
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
