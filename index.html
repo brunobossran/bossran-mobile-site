@@ -183,6 +183,8 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   .bokeh { display: none; }
 }
 </style>
+<link rel="stylesheet" href="assets/community.css">
+<script defer src="assets/community.js"></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -355,5 +357,13 @@ teaserPlay.addEventListener('click', () => { teaser.play(); });
 teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
 
 </script>
+<details class="community-menu">
+  <summary><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M20 4H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3v4l5-4h8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1Z"/><path d="M7 9h10M7 12h7"/></svg>Community</summary>
+  <nav aria-label="Join the BossRan community">
+    <a href="https://discord.gg/xVfgwdGqQV" target="_blank" rel="noopener noreferrer">Join Discord</a>
+    <a href="https://www.facebook.com/groups/bossranmobile" target="_blank" rel="noopener noreferrer">Join the Facebook group</a>
+    <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener noreferrer">Follow the Facebook page</a>
+  </nav>
+</details>
 </body>
 </html>
