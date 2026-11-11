@@ -156,8 +156,9 @@ section { padding: 72px 0; }
 .android-steps h2 { margin: 0; color: var(--text); font-size: 22px; }
 .android-steps p { margin: 6px 0 16px; color: var(--muted); line-height: 1.45; }
 .android-steps p:last-child { margin-bottom: 0; }
-.android-steps label { display: block; margin-bottom: 6px; font-weight: 700; }
-.android-steps input { box-sizing: border-box; width: 100%; padding: 10px 12px; font: inherit; color: var(--text); background: var(--panel); border: 1px solid var(--border-strong); border-radius: 6px; }
+.android-steps details { border-top: 1px solid var(--border); margin-top: 12px; }
+.android-steps summary { cursor: pointer; padding: 14px 0; font-weight: 700; }
+.android-steps summary small { display: block; margin: 3px 0 0 18px; font-size: 14px; font-weight: 400; color: var(--muted); }
 .android-steps .btn { width: 100%; }
 .beta-help { display: inline-block; padding: 12px; font-size: 14px; }
 .faq { max-width: 760px; margin: 28px auto 0; text-align: left; }
@@ -234,22 +235,23 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <p id="test" class="lead">Choose your device to join the beta.</p>
       <nav id="signup" class="ctas platform-choice" aria-label="Choose your beta platform">
         <a class="btn" href="#android-beta" aria-controls="android-beta"><svg aria-hidden="true"><use href="#i-android"/></svg>Android</a>
-        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG" aria-label="Apple — join with TestFlight"><svg aria-hidden="true"><use href="#i-apple"/></svg>Apple</a>
+        <a class="btn" href="https://testflight.apple.com/join/b6cz2WRG" aria-label="iPhone or iPad — join with TestFlight"><svg aria-hidden="true"><use href="#i-apple"/></svg>iPhone / iPad</a>
       </nav>
       <div id="android-beta" class="android-steps" tabindex="-1" role="region" aria-labelledby="android-title">
-        <h2 id="android-title">Install on Android</h2>
-        <p><strong>Direct APK</strong> · No tester signup needed.</p>
-        <a class="btn" href="https://downloads.bossran.net/android/alpha/bossran-2859-9b587d5bfe44c133.apk">Download Android APK</a>
-        <p>Open the APK from <strong>Downloads</strong>. If Android asks for permission, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. Tap <strong>Install</strong>, then <strong>Open</strong>.</p>
-        <h3>Install through Google Play</h3>
-        <p>Choose the Google account you want to use for the beta. Already invited by email? Skip the group and use the address that received your invitation.</p>
-        <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
-        <p>Tap <strong>Join group</strong>, check the email under your Google profile picture, then return here.</p>
-        <label for="tester-email">Your tester email (optional)</label>
-        <input id="tester-email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" aria-describedby="play-account-help" placeholder="Email used for the group or invite">
-        <p id="play-account-help">On your phone, open the <strong>Play Store</strong>. Tap your profile picture, then the arrow beside your email. Select your tester email. Return here, tap the button below, and choose that same email when Google asks.</p>
-        <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Join on Google Play</a>
-        <p>Accept the test if prompted. When you see <strong>You are a tester</strong>, tap <strong>download it on Google Play</strong> to install BossRan Mobile.</p>
+        <h2 id="android-title">Choose one way to install</h2>
+        <details name="android-install">
+          <summary>Direct APK <small>Download from BossRan</small></summary>
+          <a class="btn" href="https://downloads.bossran.net/android/alpha/bossran-2859-9b587d5bfe44c133.apk">Download APK</a>
+          <p>Open the file in <strong>Downloads</strong>. If prompted, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. Tap <strong>Install</strong>.</p>
+        </details>
+        <details name="android-install">
+          <summary>Google Play <small>Join the Play Store beta</small></summary>
+          <p>Use the same Google account as your Play Store for both steps. Already invited by email? Go to step 2 with that account.</p>
+          <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fgroups.google.com%2Fg%2Fbossran-mobile-android-testers%2Fabout" target="_blank" rel="noopener">1. Join the tester group</a>
+          <p>Tap <strong>Join group</strong>, then return here.</p>
+          <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Open Google Play</a>
+          <p>Tap <strong>Become a tester</strong>, then <strong>download it on Google Play</strong> and <strong>Install</strong>.</p>
+        </details>
       </div>
       <a class="beta-help" href="#faq">Need help?</a>
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
@@ -305,7 +307,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <h2 class="display center" id="faq-title">Got<span>questions?</span></h2>
       <div class="faq">
         <details><summary>Do I need an email invite?</summary><p>You can join yourself. On Android, <a href="#android-beta">download the APK or join through Google Play</a>. On iPhone or iPad, open the <a href="https://testflight.apple.com/join/b6cz2WRG">TestFlight invitation</a> on your device.</p></details>
-        <details><summary>Google Play opens a blank panel or says I’m ineligible. What do I do?</summary><p>Close the panel and tap your Play Store profile picture to check the full email address. Select the account you used for the tester group or invitation, then reopen step 2 and choose the same account. <a href="#android-beta">Back to Android signup</a></p></details>
+        <details><summary>Google Play opens a blank panel or says I’m ineligible. What do I do?</summary><p>Close the panel and tap your Play Store profile picture to check the full email address. Select the account you used for the tester group or invitation, then reopen step 2 and choose the same account. <a href="#android-beta">Choose an Android install method</a></p></details>
         <details><summary>When can I play?</summary><p>Check <a href="https://discord.gg/xVfgwdGqQV">Discord</a> for play-session times.</p></details>
         <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
       </div>
