@@ -83,7 +83,7 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 
 /* Gameplay backdrop: blurred footage, dark wash, warm glow, drifting gold bokeh */
 .scene { position: relative; isolation: isolate; overflow: hidden; }
-.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/gameplay-v4.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
+.scene-bg { position: absolute; inset: -60px; z-index: -3; background: url(assets/gameplay-cw.jpg) center / cover; filter: blur(30px) saturate(1.15); opacity: .55; }
 .scene::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(60% 50% at 50% 62%, rgba(247, 170, 60, .24), rgba(247, 170, 60, 0) 70%), linear-gradient(180deg, rgba(13, 10, 7, .55) 0, rgba(13, 10, 7, .7) 45%, var(--ground) 100%); }
 .bokeh { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .bokeh i { position: absolute; bottom: -40px; width: var(--s); height: var(--s); border-radius: 50%; background: radial-gradient(circle, rgba(255, 205, 110, .55), rgba(255, 205, 110, 0) 70%); animation: drift var(--d) linear infinite; animation-delay: var(--t); }
@@ -256,7 +256,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
         <div class="rig">
           <img src="assets/stage-under.svg" alt="">
-          <div class="screen"><video id="loop" data-src="assets/gameplay-v4.mp4" poster="assets/gameplay-v4.jpg" muted loop playsinline preload="none" aria-label="BossRan Mobile gameplay: a character fighting a crowd of monsters in a forest field"></video></div>
+          <div class="screen"><video id="loop" data-src="assets/gameplay-cw.mp4" poster="assets/gameplay-cw.jpg" muted loop playsinline preload="none" aria-label="BossRan Mobile CW gameplay with players battling in an arena"></video></div>
           <img src="assets/stage-over.svg" alt="">
         </div>
       </figure>
