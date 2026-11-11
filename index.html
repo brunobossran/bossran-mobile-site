@@ -101,6 +101,7 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 .rig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
 .rig .screen { position: absolute; left: 15.294%; top: 12%; width: 69.412%; height: 47.478%; border-radius: 3.9% / 8.42%; overflow: hidden; background: #000; }
 .rig .screen video { width: 100%; height: 100%; object-fit: cover; }
+#gameplay-toggle { min-height: 44px; padding: 8px 20px; border: 1px solid var(--border-strong); border-radius: 6px; color: var(--gold-soft); background: var(--field); font: inherit; cursor: pointer; }
 .note { margin: 10px 0 0; color: var(--faint); font-size: 13px; }
 
 .stores { margin-top: 30px; }
@@ -129,31 +130,10 @@ section { padding: 72px 0; }
 .features p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
 @media (min-width: 760px) { .features { grid-template-columns: repeat(3, 1fr); } .features li { flex-direction: column; } }
 
-/* Posters: swipe row on phones, grid on wide screens */
-.posters { display: grid; grid-auto-flow: column; grid-auto-columns: min(68vw, 300px); gap: 14px; margin: 36px calc(var(--gutter) * -1) 0; padding: 4px var(--gutter) 18px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; list-style: none; }
-.posters::-webkit-scrollbar { display: none; }
-.posters li { scroll-snap-align: center; }
-.posters button { display: block; width: 100%; padding: 0; background: none; border: 0; cursor: zoom-in; text-align: left; color: inherit; font: inherit; }
-.posters img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 14px; border: 2px solid var(--border); box-shadow: 0 18px 40px rgba(0, 0, 0, .5); transition: transform .2s, border-color .2s; }
-.posters button:hover img, .posters button:focus-visible img { transform: translateY(-4px); border-color: var(--gold); }
-.posters span { display: block; margin-top: 10px; color: var(--text); font-size: 14px; font-weight: 800; font-style: italic; letter-spacing: .04em; text-transform: uppercase; }
-.swipe { margin: 0; color: var(--faint); font-size: 13px; text-align: center; }
-@media (min-width: 900px) {
-  .posters { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); grid-auto-columns: auto; margin: 36px 0 0; padding: 4px 0 0; overflow: visible; }
-  .swipe { display: none; }
-}
-
-/* Poster viewer */
-.lb { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; background: transparent; border: 0; color: var(--text-2); overflow: visible; }
-.lb::backdrop { background: rgba(5, 4, 3, .88); }
-.lb figure { margin: 0; }
-.lb img { width: 100%; max-height: calc(100dvh - 150px); object-fit: contain; border-radius: 14px; }
-.lb figcaption { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
-.lb figcaption b { color: var(--text); font-style: italic; font-weight: 900; text-transform: uppercase; }
-.lb .nav { display: flex; gap: 8px; }
-.lb button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 50%; color: var(--gold); cursor: pointer; }
-.lb button svg { width: 20px; height: 20px; }
-.lb .close { position: absolute; top: -14px; right: -14px; background: var(--red); border-color: var(--red); color: #fff; }
+/* Official Facebook posts */
+.facebook-posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px; margin: 32px 0 0; padding: 0; list-style: none; text-align: left; }
+.facebook-posts a { display: block; font-weight: 700; color: var(--text); text-underline-offset: 4px; }
+.facebook-posts img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; margin-bottom: 8px; }
 
 .install-picker { max-width: 420px; margin: 26px auto 0; padding: 20px; background: #191511; border: 1px solid var(--border); border-radius: 14px; text-align: left; }
 .install-picker .lead { margin: 0 0 12px; font-size: 16px; color: var(--text); font-weight: 650; }
@@ -163,7 +143,7 @@ section { padding: 72px 0; }
 .platform-choice a:hover, .install-picker:has(.android-steps:target) a[href="#android-beta"] { background: #372e21; color: var(--gold-soft); }
 .install-picker :is(a, summary):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .android-steps { display: none; scroll-margin-top: 120px; }
-.android-steps:target, .android-device .android-steps { display: block; }
+.android-steps:has(#direct-apk:target), .android-steps:target, .android-device .android-steps { display: block; }
 .android-device .install-picker > .lead, .android-device .platform-choice { display: none; }
 .android-device .android-steps h2 { margin-top: 0; }
 .android-steps:focus { outline: none; }
@@ -226,10 +206,10 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <a class="brand" href="#top" aria-label="BossRan Mobile home"><img src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile"></a>
     <nav aria-label="Main">
       <a href="#teaser">Teaser</a>
-      <a href="#posters">Posters</a>
+      <a href="#posters">Facebook</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn join" href="#test">Beta access</a>
+    <a class="btn join" href="#test">Download</a>
   </div>
 </header>
 
@@ -256,9 +236,9 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         </nav>
         <div id="android-beta" class="android-steps" tabindex="-1" role="region" aria-labelledby="android-title">
           <h2 id="android-title">How do you want to install?</h2>
-          <details name="android-install">
+          <details id="direct-apk" name="android-install">
             <summary>Direct APK <small>Get the file directly from BossRan</small></summary>
-            <a class="btn" href="https://downloads.bossran.net/android/alpha/bossran-2859-9b587d5bfe44c133.apk">Download APK</a>
+            <a class="btn" href="https://downloads.bossran.net/android/alpha/download.html">Download APK</a>
             <p>Open the file in <strong>Downloads</strong>. If prompted, tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. Tap <strong>Install</strong>.</p>
           </details>
           <details name="android-install">
@@ -268,6 +248,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
             <p>Tap <strong>Join group</strong>, then return here.</p>
             <a class="btn" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fplay.google.com%2Fapps%2Ftesting%2Fnet.bossran.mobile">2. Open Google Play</a>
             <p>Tap <strong>Become a tester</strong>, then <strong>download it on Google Play</strong> and <strong>Install</strong>.</p>
+            <p>Google Play not working? <a href="#direct-apk">Use the direct APK</a>.</p>
           </details>
         </div>
       </div>
@@ -275,11 +256,11 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
         <div class="rig">
           <img src="assets/stage-under.svg" alt="">
-          <div class="screen"><video id="loop" src="assets/gameplay-v4.mp4" poster="assets/gameplay-v4.jpg" autoplay muted loop playsinline preload="auto" aria-label="BossRan Mobile gameplay: a character fighting a crowd of monsters in a forest field"></video></div>
+          <div class="screen"><video id="loop" data-src="assets/gameplay-v4.mp4" poster="assets/gameplay-v4.jpg" muted loop playsinline preload="none" aria-label="BossRan Mobile gameplay: a character fighting a crowd of monsters in a forest field"></video></div>
           <img src="assets/stage-over.svg" alt="">
         </div>
       </figure>
-      <p class="note">Real gameplay from the BossRan Mobile test build.</p>
+      <button type="button" id="gameplay-toggle" aria-controls="loop">Play gameplay</button>
 
     </div>
   </div>
@@ -304,18 +285,12 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 
   <section id="posters" class="band center" aria-labelledby="posters-title">
     <div class="wrap">
-      <p class="kicker">From our Facebook page</p>
-      <h2 class="display" id="posters-title">Join the<span>conversation.</span></h2>
-      <div class="rule"></div>
-      <p class="lead">Vote for your school, tag your old squad and share your RAN stories on our page.</p>
-      <ul class="posters" id="poster-list">
-        <li><button type="button" data-full="assets/posters/01-balik-ran.jpg"><img src="assets/posters/01-balik-ran-sm.jpg" width="546" height="720" loading="lazy" alt="Poster for RAN veterans: back to RAN, anywhere. Are you ready?"><span>Back to RAN</span></button></li>
-        <li><button type="button" data-full="assets/posters/02-school-poll.jpg"><img src="assets/posters/02-school-poll-sm.jpg" width="546" height="720" loading="lazy" alt="School poll poster: which side are you on? A Sacred Gate, B Mystic Peak, C Phoenix. Comment A, B or C."><span>Pick your school</span></button></li>
-        <li><button type="button" data-full="assets/posters/03-squad-roll-call.jpg"><img src="assets/posters/03-squad-roll-call-sm.jpg" width="576" height="720" loading="lazy" alt="Squad roll call poster: get the old squad back together. Tag 3 friends!"><span>Squad roll call</span></button></li>
-        <li><button type="button" data-full="assets/posters/05-iphone-users.jpg"><img src="assets/posters/05-iphone-users-sm.jpg" width="546" height="720" loading="lazy" alt="Poster: iPhone users, you're coming too! Back to RAN, on iPhone as well. iPhone simulator preview."><span>iPhone users</span></button></li>
-        <li><button type="button" data-full="assets/posters/06-ios-iphone-focus.jpg"><img src="assets/posters/06-ios-iphone-focus-sm.jpg" width="576" height="720" loading="lazy" alt="Poster: coming soon to iOS. BossRan on iPhone. RAN on iPhone, almost here."><span>iPhone preview</span></button></li>
+      <h2 class="display" id="posters-title">From our<span>Facebook page.</span></h2>
+      <ul class="facebook-posts">
+        <li><a href="https://www.facebook.com/122112926391492315/posts/122118875091492315"><img src="assets/facebook-reports.jpg" alt="" loading="lazy">How to report a beta bug</a></li>
+        <li><a href="https://www.facebook.com/reel/2684437282026227/"><img src="assets/facebook-cw.jpg" alt="" loading="lazy">Watch CW on mobile</a></li>
+        <li><a href="https://www.facebook.com/reel/1817162786155067/"><img src="assets/facebook-settings.jpg" alt="" loading="lazy">Customize your controls and settings</a></li>
       </ul>
-      <p class="swipe">Swipe for more</p>
     </div>
   </section>
 
@@ -325,7 +300,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <h2 class="display center" id="faq-title">Got<span>questions?</span></h2>
       <div class="faq">
         <details><summary>Do I need an email invite?</summary><p>You can join yourself. On Android, <a href="#android-beta">download the APK or join through Google Play</a>. On iPhone or iPad, open the <a href="https://testflight.apple.com/join/b6cz2WRG">TestFlight invitation</a> on your device.</p></details>
-        <details><summary>Google Play opens a blank panel or says I’m ineligible. What do I do?</summary><p>Close the panel and tap your Play Store profile picture to check the full email address. Select the account you used for the tester group or invitation, then reopen step 2 and choose the same account. <a href="#android-beta">Choose an Android install method</a></p></details>
+        <details><summary>Google Play opens a blank panel or says I’m ineligible. What do I do?</summary><p>Close the panel and tap your Play Store profile picture to check the full email address. Select the account you used for the tester group or invitation, then reopen step 2 and choose the same account. Or <a href="#direct-apk">install the direct APK</a> without tester signup.</p></details>
         <details><summary>When can I play?</summary><p>Check <a href="https://discord.gg/xVfgwdGqQV">Discord</a> for play-session times.</p></details>
         <details><summary>How do I contact you?</summary><p>Email <a href="mailto:support@bossran.net">support@bossran.net</a> or message our <a href="https://www.facebook.com/bossran.mobile" target="_blank" rel="noopener">Facebook page</a>.</p></details>
       </div>
@@ -347,56 +322,38 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   </div>
 </footer>
 
-<dialog class="lb" id="lb" aria-label="Poster">
-  <button class="close" type="button" aria-label="Close" data-lb="close"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
-  <figure>
-    <img id="lb-img" src="" alt="">
-    <figcaption>
-      <b id="lb-title"></b>
-      <span class="nav">
-        <button type="button" aria-label="Previous poster" data-lb="-1"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
-        <button type="button" aria-label="Next poster" data-lb="1"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
-      </span>
-    </figcaption>
-  </figure>
-</dialog>
 
 <script>
-// Hero gameplay loop: stays on its still frame for visitors who ask for less motion
+const directApk = document.getElementById('direct-apk');
+function openApkFromLink() {
+  if (location.hash === '#direct-apk') directApk.open = true;
+}
+window.addEventListener('hashchange', openApkFromLink);
+document.querySelectorAll('a[href="#direct-apk"]').forEach(link => {
+  link.addEventListener('click', () => { directApk.open = true; });
+});
+openApkFromLink();
+
 const loop = document.getElementById('loop');
-const lessMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-if (lessMotion.matches) { loop.removeAttribute('autoplay'); loop.pause(); }
+const gameplayToggle = document.getElementById('gameplay-toggle');
+function playGameplay() {
+  if (!loop.hasAttribute('src')) loop.src = loop.dataset.src;
+  loop.play().catch(() => { gameplayToggle.textContent = 'Play gameplay'; });
+}
+loop.addEventListener('playing', () => { gameplayToggle.textContent = 'Pause gameplay'; });
+loop.addEventListener('pause', () => { gameplayToggle.textContent = 'Play gameplay'; });
+gameplayToggle.addEventListener('click', () => {
+  if (loop.paused) playGameplay();
+  else loop.pause();
+});
+if (matchMedia('(min-width: 821px) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches &&
+    !document.documentElement.classList.contains('android-device') && !navigator.maxTouchPoints) playGameplay();
 
 // Teaser: big play button over the poster, then the native controls take over (with sound)
 const teaser = document.getElementById('teaser-video');
 const teaserPlay = document.getElementById('teaser-play');
 teaserPlay.addEventListener('click', () => { teaser.play(); });
 teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
-
-// Poster viewer
-const posterButtons = [...document.querySelectorAll('#poster-list button')];
-const lb = document.getElementById('lb');
-const lbImg = document.getElementById('lb-img');
-const lbTitle = document.getElementById('lb-title');
-let current = 0;
-function showPoster(i) {
-  current = (i + posterButtons.length) % posterButtons.length;
-  const b = posterButtons[current];
-  const thumb = b.querySelector('img');
-  lbImg.src = b.dataset.full;
-  lbImg.alt = thumb.alt;
-  lbTitle.textContent = b.querySelector('span').textContent;
-}
-posterButtons.forEach((b, i) => b.addEventListener('click', () => { showPoster(i); lb.showModal(); }));
-lb.addEventListener('click', (e) => {
-  const action = e.target.closest('[data-lb]')?.dataset.lb;
-  if (action === 'close' || e.target === lb) lb.close();
-  else if (action) showPoster(current + Number(action));
-});
-lb.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') showPoster(current - 1);
-  if (e.key === 'ArrowRight') showPoster(current + 1);
-});
 
 </script>
 </body>
