@@ -163,6 +163,37 @@ section { padding: 72px 0; }
 .faq summary::marker { color: var(--gold); }
 .faq p { margin: 0 0 16px; color: var(--muted); }
 
+/* Beta in numbers (data: assets/stats.json, refreshed daily by the stats job) */
+.stats-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 960px; margin: 32px auto 0; padding: 0; list-style: none; }
+.stats-tiles li { padding: 18px 12px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 16px; }
+.stats-tiles b { display: block; color: var(--gold); font-size: clamp(30px, 8vw, 46px); font-style: italic; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.stats-tiles span { display: block; margin-top: 8px; color: var(--text-2); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.stats-tiles small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
+.stats-panels { display: grid; gap: 14px; max-width: 960px; margin: 14px auto 0; text-align: left; }
+.stats-panel { padding: 20px; background: var(--panel); border: 2px solid var(--border); border-radius: 16px; }
+.stats-panel h3 { margin: 0 0 16px; color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.day-chart { display: flex; align-items: flex-end; gap: 6px; height: 170px; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--border); }
+.day-chart li { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
+.day-chart .bar { display: block; width: 100%; max-width: 44px; min-height: 2px; background: var(--gold); border-radius: 4px 4px 0 0; }
+.day-chart .val { margin-bottom: 4px; color: var(--text-2); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.day-chart li:not(.labeled) .val { visibility: hidden; }
+.day-chart li:hover .val, .day-chart li:focus-within .val { visibility: visible; }
+.day-labels { display: flex; gap: 6px; margin: 6px 0 0; padding: 0; list-style: none; }
+.day-labels li { flex: 1; min-width: 0; color: var(--muted); font-size: 11px; text-align: center; white-space: nowrap; overflow: hidden; }
+.bar-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.bar-list li { display: grid; grid-template-columns: 96px 1fr auto; align-items: center; gap: 10px; color: var(--text-2); font-size: 14px; font-weight: 700; }
+.bar-list .track { display: block; height: 10px; background: rgba(255, 255, 255, .08); border-radius: 5px; overflow: hidden; }
+.bar-list .fill { display: block; height: 100%; background: var(--gold); border-radius: 5px; }
+.bar-list .num { min-width: 48px; color: var(--text); text-align: right; font-variant-numeric: tabular-nums; }
+.stats-updated { margin: 16px 0 0; color: var(--faint); font-size: 13px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 760px) {
+  .stats-tiles { grid-template-columns: repeat(4, 1fr); }
+  .stats-panels { grid-template-columns: 1fr 1fr; }
+  .stats-panels .wide { grid-column: 1 / -1; }
+  .day-chart { height: 200px; }
+}
+
 footer { border-top: 1px solid var(--border); padding: 32px 0 44px; color: var(--muted); font-size: 13px; }
 footer .brand img { height: 44px; width: auto; margin-bottom: 18px; }
 footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
@@ -206,6 +237,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   <div class="wrap">
     <a class="brand" href="#top" aria-label="BossRan Mobile home"><img src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile"></a>
     <nav aria-label="Main">
+      <a href="#stats">Stats</a>
       <a href="#teaser">Teaser</a>
       <a href="#posters">Facebook</a>
       <a href="#faq">FAQ</a>
@@ -265,6 +297,36 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 
     </div>
   </div>
+
+  <section id="stats" class="band center" aria-labelledby="stats-title" hidden>
+    <div class="wrap">
+      <p class="kicker">Beta in numbers</p>
+      <h2 class="display" id="stats-title">The beta is<span>growing.</span></h2>
+      <div class="rule"></div>
+      <ul class="stats-tiles">
+        <li><b data-stat="testers">0</b><span>Beta testers</span></li>
+        <li><b data-stat="characters">0</b><span>Characters created</span></li>
+        <li><b data-stat="new_players">0</b><span>New players</span><small data-stat-day></small></li>
+        <li><b data-stat="players">0</b><span>Players</span><small data-stat-day></small></li>
+      </ul>
+      <div class="stats-panels">
+        <div class="stats-panel wide">
+          <h3 id="days-title">Players per day</h3>
+          <ul class="day-chart" id="day-chart" aria-labelledby="days-title"></ul>
+          <ul class="day-labels" id="day-labels" aria-hidden="true"></ul>
+        </div>
+        <div class="stats-panel">
+          <h3 id="classes-title">Most played classes</h3>
+          <ul class="bar-list" id="class-list" aria-labelledby="classes-title"></ul>
+        </div>
+        <div class="stats-panel">
+          <h3 id="schools-title">Characters per school</h3>
+          <ul class="bar-list" id="school-list" aria-labelledby="schools-title"></ul>
+        </div>
+      </div>
+      <p class="stats-updated" id="stats-updated"></p>
+    </div>
+  </section>
 
   <section id="teaser" class="band center" aria-labelledby="teaser-title">
     <div class="wrap">
@@ -354,6 +416,70 @@ const teaser = document.getElementById('teaser-video');
 const teaserPlay = document.getElementById('teaser-play');
 teaserPlay.addEventListener('click', () => { teaser.play(); });
 teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
+
+// Beta in numbers: assets/stats.json is refreshed once a day; the hourly query key keeps Cloudflare's copy fresh.
+(async () => {
+  const box = document.getElementById('stats');
+  const hourKey = new Date().toISOString().slice(0, 13).replace(/\D/g, '');
+  let s;
+  try {
+    const r = await fetch('assets/stats.json?h=' + hourKey);
+    if (!r.ok) return;
+    s = await r.json();
+  } catch (e) { return; }
+  if (!s || !s.days || !s.days.length) return;
+  const fmt = n => Number(n).toLocaleString('en-US');
+  const dayName = iso => new Date(iso + 'T12:00:00+08:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'Asia/Manila' });
+  const last = s.days[s.days.length - 1];
+  const vals = { testers: s.testers, characters: s.characters, new_players: last.new_players, players: last.players };
+  box.querySelectorAll('[data-stat]').forEach(el => { el.textContent = fmt(vals[el.dataset.stat]); });
+  box.querySelectorAll('[data-stat-day]').forEach(el => { el.textContent = 'on ' + dayName(last.date); });
+
+  const days = s.days.slice(-14);
+  const maxP = Math.max(...days.map(d => d.players));
+  const chart = document.getElementById('day-chart');
+  const labels = document.getElementById('day-labels');
+  days.forEach((d, i) => {
+    const li = document.createElement('li');
+    li.tabIndex = 0;
+    if (days.length <= 7 || i === days.length - 1 || d.players === maxP) li.classList.add('labeled');
+    const val = document.createElement('span');
+    val.className = 'val'; val.textContent = fmt(d.players); val.setAttribute('aria-hidden', 'true');
+    const bar = document.createElement('span');
+    bar.className = 'bar'; bar.style.height = (d.players / maxP * 82).toFixed(1) + '%';
+    const sr = document.createElement('span');
+    sr.className = 'sr-only'; sr.textContent = dayName(d.date) + ': ' + fmt(d.players) + ' players, ' + fmt(d.new_players) + ' new';
+    li.title = dayName(d.date) + ' · ' + fmt(d.players) + ' players · ' + fmt(d.new_players) + ' new';
+    li.append(val, bar, sr);
+    chart.append(li);
+    const lab = document.createElement('li');
+    lab.textContent = dayName(d.date);
+    labels.append(lab);
+  });
+
+  const fillList = (id, rows) => {
+    const ul = document.getElementById(id);
+    const max = Math.max(...rows.map(r => r.count));
+    rows.forEach(r => {
+      const li = document.createElement('li');
+      const name = document.createElement('span'); name.textContent = r.name;
+      const track = document.createElement('span'); track.className = 'track';
+      const fill = document.createElement('span'); fill.className = 'fill'; fill.style.width = (r.count / max * 100).toFixed(1) + '%';
+      track.append(fill);
+      const num = document.createElement('span'); num.className = 'num'; num.textContent = fmt(r.count);
+      li.append(name, track, num);
+      ul.append(li);
+    });
+  };
+  fillList('class-list', s.classes);
+  fillList('school-list', s.schools);
+
+  const up = new Date(s.updated);
+  document.getElementById('stats-updated').textContent = 'Updated ' +
+    up.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila' }) +
+    ' (PH time). Refreshed every day.';
+  box.hidden = false;
+})();
 
 </script>
 <nav class="social-links" aria-label="BossRan community">
