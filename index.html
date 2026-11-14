@@ -163,6 +163,16 @@ section { padding: 72px 0; }
 .faq summary::marker { color: var(--gold); }
 .faq p { margin: 0 0 16px; color: var(--muted); }
 
+/* Small beta counter in the first view; links down to the full stats */
+.hero-stats { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 12px; max-width: 100%; margin: 18px auto 0; padding: 8px 16px; background: var(--panel); border: 1px solid var(--border-strong); border-radius: 999px; color: var(--text-2); font-size: 14px; font-weight: 700; text-decoration: none; line-height: 1.2; }
+.hero-stats[hidden] { display: none; }
+.hero-stats:hover { border-color: var(--gold); }
+.hero-stats:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.hero-stats .spark { flex: none; width: 56px; height: 22px; }
+.hero-stats b { color: var(--gold); font-size: 18px; font-style: italic; font-weight: 900; font-variant-numeric: tabular-nums; }
+.hero-stats .grow { color: var(--text); white-space: nowrap; }
+.hero-stats .grow::before { content: "\25B2"; margin-right: 4px; color: var(--gold); font-size: 11px; }
+.hero-stats .more { color: var(--muted); font-size: 13px; white-space: nowrap; }
 /* Beta in numbers (data: assets/stats.json, refreshed daily by the stats job) */
 .stats-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 960px; margin: 32px auto 0; padding: 0; list-style: none; }
 .stats-tiles li { padding: 18px 12px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 16px; }
@@ -170,7 +180,7 @@ section { padding: 72px 0; }
 .stats-tiles span { display: block; margin-top: 8px; color: var(--text-2); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .stats-tiles small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
 .stats-panels { display: grid; gap: 14px; max-width: 960px; margin: 14px auto 0; text-align: left; }
-.stats-panel { padding: 20px; background: var(--panel); border: 2px solid var(--border); border-radius: 16px; }
+.stats-panel { min-width: 0; padding: 20px; background: var(--panel); border: 2px solid var(--border); border-radius: 16px; }
 .stats-panel h3 { margin: 0 0 16px; color: var(--gold); font-size: 13px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
 .day-chart { display: flex; align-items: flex-end; gap: 6px; height: 170px; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--border); }
 .day-chart li { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; min-width: 0; }
@@ -261,6 +271,12 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
       <p class="kicker">Mobile closed beta</p>
       <h1 class="display">Back to RAN.<span>Anywhere.</span></h1>
+      <a class="hero-stats" id="hero-stats" href="#stats" hidden>
+        <svg class="spark" viewBox="0 0 56 22" aria-hidden="true"></svg>
+        <span><b data-hs="testers">0</b> beta testers</span>
+        <span class="grow"><span data-hs="new">+0</span> new <span data-hs="day"></span></span>
+        <span class="more" aria-hidden="true">See stats ›</span>
+      </a>
       <div class="install-picker" id="test">
         <p class="lead">Choose your device</p>
         <nav id="signup" class="ctas platform-choice" aria-label="Choose your beta platform">
@@ -478,6 +494,20 @@ teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
   document.getElementById('stats-updated').textContent = 'Updated ' +
     up.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila' }) +
     ' (PH time). Refreshed every day.';
+  // first-view counter: testers, new players on the last full day, players-per-day sparkline
+  const hs = document.getElementById('hero-stats');
+  hs.querySelector('[data-hs="testers"]').textContent = fmt(s.testers);
+  hs.querySelector('[data-hs="new"]').textContent = '+' + fmt(last.new_players);
+  hs.querySelector('[data-hs="day"]').textContent = 'on ' + dayName(last.date);
+  const pts = days.map((d, i) => [days.length > 1 ? 2 + i * 52 / (days.length - 1) : 28, 20 - d.players / maxP * 17]);
+  const line = pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+  const end = pts[pts.length - 1];
+  hs.querySelector('.spark').innerHTML =
+    '<polygon points="2,21 ' + line + ' ' + end[0].toFixed(1) + ',21" fill="rgba(247,196,72,.18)"/>' +
+    '<polyline points="' + line + '" fill="none" stroke="#f7c448" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
+    '<circle cx="' + end[0].toFixed(1) + '" cy="' + end[1].toFixed(1) + '" r="2.6" fill="#ffe29a"/>';
+  hs.setAttribute('aria-label', fmt(s.testers) + ' beta testers, ' + fmt(last.new_players) + ' new players on ' + dayName(last.date) + '. See beta stats.');
+  hs.hidden = false;
   box.hidden = false;
 })();
 
