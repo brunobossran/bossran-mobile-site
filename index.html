@@ -176,7 +176,7 @@ section { padding: 72px 0; }
 .hero-stats .grow { color: var(--text); white-space: nowrap; }
 .hero-stats .grow::before { content: "\25B2"; margin-right: 4px; color: var(--gold); font-size: 11px; }
 .hero-stats .more { color: var(--muted); font-size: 13px; white-space: nowrap; }
-/* Beta in numbers (data: assets/stats.json, refreshed daily by the stats job) */
+/* Beta in numbers (data: assets/stats.json, refreshed hourly by the stats job) */
 .stats-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 960px; margin: 32px auto 0; padding: 0; list-style: none; }
 .stats-tiles li { padding: 18px 12px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 16px; }
 .stats-tiles b { display: block; color: var(--gold); font-size: clamp(30px, 8vw, 46px); font-style: italic; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
@@ -277,6 +277,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <a class="hero-stats" id="hero-stats" href="#stats" hidden>
         <svg class="spark" viewBox="0 0 56 22" aria-hidden="true"></svg>
         <span><b data-hs="testers">0</b> beta testers</span>
+        <span><b data-hs="today">0</b> played <span data-hs="today-day">today</span></span>
         <span class="grow"><span data-hs="new">+0</span> new <span data-hs="day"></span></span>
         <span class="more" aria-hidden="true">See stats ›</span>
       </a>
@@ -437,7 +438,7 @@ const teaserPlay = document.getElementById('teaser-play');
 teaserPlay.addEventListener('click', () => { teaser.play(); });
 teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
 
-// Beta in numbers: assets/stats.json is refreshed once a day; the hourly query key keeps Cloudflare's copy fresh.
+// Beta in numbers: assets/stats.json is refreshed every hour; the hourly query key keeps Cloudflare's copy fresh.
 (async () => {
   const box = document.getElementById('stats');
   const hourKey = new Date().toISOString().slice(0, 13).replace(/\D/g, '');
@@ -497,12 +498,19 @@ teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
   const up = new Date(s.updated);
   document.getElementById('stats-updated').textContent = 'Updated ' +
     up.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila' }) +
-    ' (PH time). Refreshed every day.';
-  // first-view counter: testers, new players on the last full day, players-per-day sparkline
+    ' (PH time). Refreshed every hour.';
+  // first-view counter: testers, players logged in today (PH day), new players today, players-per-day sparkline.
+  // Falls back to the last full day when stats.json has no "today" or it is from an earlier PH day.
   const hs = document.getElementById('hero-stats');
+  const phToday = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Manila' });
+  const t = s.today && s.today.date === phToday ? s.today : null;
+  const hsDay = t ? 'today' : 'on ' + dayName(last.date);
+  const hsPlayers = t ? t.players : last.players, hsNew = t ? t.new_players : last.new_players;
   hs.querySelector('[data-hs="testers"]').textContent = fmt(s.testers);
-  hs.querySelector('[data-hs="new"]').textContent = '+' + fmt(last.new_players);
-  hs.querySelector('[data-hs="day"]').textContent = 'on ' + dayName(last.date);
+  hs.querySelector('[data-hs="today"]').textContent = fmt(hsPlayers);
+  hs.querySelector('[data-hs="today-day"]').textContent = hsDay;
+  hs.querySelector('[data-hs="new"]').textContent = '+' + fmt(hsNew);
+  hs.querySelector('[data-hs="day"]').textContent = hsDay;
   const pts = days.map((d, i) => [days.length > 1 ? 2 + i * 52 / (days.length - 1) : 28, 20 - d.players / maxP * 17]);
   const line = pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
   const end = pts[pts.length - 1];
@@ -510,7 +518,7 @@ teaser.addEventListener('play', () => { teaserPlay.hidden = true; });
     '<polygon points="2,21 ' + line + ' ' + end[0].toFixed(1) + ',21" fill="rgba(247,196,72,.18)"/>' +
     '<polyline points="' + line + '" fill="none" stroke="#f7c448" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
     '<circle cx="' + end[0].toFixed(1) + '" cy="' + end[1].toFixed(1) + '" r="2.6" fill="#ffe29a"/>';
-  hs.setAttribute('aria-label', fmt(s.testers) + ' beta testers, ' + fmt(last.new_players) + ' new players on ' + dayName(last.date) + '. See beta stats.');
+  hs.setAttribute('aria-label', fmt(s.testers) + ' beta testers, ' + fmt(hsPlayers) + ' played ' + hsDay + ', ' + fmt(hsNew) + ' new ' + hsDay + '. See beta stats.');
   hs.hidden = false;
   box.hidden = false;
 })();
