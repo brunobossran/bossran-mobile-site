@@ -64,11 +64,11 @@
   },
   {
    "name": "Archer",
-   "count": 1350
+   "count": 1351
   },
   {
    "name": "Brawler",
-   "count": 1199
+   "count": 1200
   },
   {
    "name": "Shaman",
@@ -82,19 +82,19 @@
   },
   {
    "name": "Mystic Peak",
-   "count": 3624
+   "count": 3626
   },
   {
    "name": "Phoenix",
    "count": 2558
   }
  ],
- "updated": "2026-11-16T20:58:56+08:00",
- "testers": 7368,
- "characters": 11517,
+ "updated": "2026-11-16T21:00:16+08:00",
+ "testers": 7369,
+ "characters": 11519,
  "today": {
   "date": "2026-11-16",
-  "new_players": 763,
-  "players": 3337
+  "new_players": 764,
+  "players": 3338
  }
 }
