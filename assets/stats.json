@@ -22,7 +22,7 @@
    "date": "2026-11-11",
    "new_players": 603,
    "players": 1965,
-   "new_characters": 973
+   "new_characters": 972
   },
   {
    "date": "2026-11-12",
@@ -58,49 +58,49 @@
  "classes": [
   {
    "name": "Extreme",
-   "count": 4819
+   "count": 4824
   },
   {
    "name": "Gunner",
-   "count": 2522
+   "count": 2527
   },
   {
    "name": "Swordsman",
-   "count": 1715
+   "count": 1723
   },
   {
    "name": "Archer",
-   "count": 1519
+   "count": 1524
   },
   {
    "name": "Brawler",
-   "count": 1365
+   "count": 1366
   },
   {
    "name": "Shaman",
-   "count": 712
+   "count": 717
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 5902
+   "count": 5913
   },
   {
    "name": "Mystic Peak",
-   "count": 3910
+   "count": 3920
   },
   {
    "name": "Phoenix",
-   "count": 2840
+   "count": 2848
   }
  ],
- "updated": "2026-11-17T18:20:13+08:00",
- "testers": 7904,
- "characters": 12652,
+ "updated": "2026-11-17T19:20:13+08:00",
+ "testers": 7910,
+ "characters": 12681,
  "today": {
   "date": "2026-11-17",
-  "new_players": 396,
-  "players": 2920
+  "new_players": 402,
+  "players": 2997
  }
 }
