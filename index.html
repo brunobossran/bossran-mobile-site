@@ -100,7 +100,6 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 .rig > img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
 .rig .screen { position: absolute; left: 15.294%; top: 12%; width: 69.412%; height: 47.478%; border-radius: 3.9% / 8.42%; overflow: hidden; background: #000; }
 .rig .screen video { width: 100%; height: 100%; object-fit: cover; }
-#gameplay-toggle { min-height: 44px; padding: 8px 20px; border: 1px solid var(--border-strong); border-radius: 6px; color: var(--gold-soft); background: var(--field); font: inherit; cursor: pointer; }
 .note { margin: 10px 0 0; color: var(--faint); font-size: 13px; }
 
 .stores { margin-top: 30px; }
@@ -109,7 +108,7 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 .badges img { height: 48px; width: auto; }
 
 /* Keep the gameplay, live beta summary and installation choices together. */
-.hero-main { display: grid; gap: 20px; align-items: center; }
+.hero-main { display: grid; gap: 20px; align-items: start; }
 .hero-gameplay, .hero-details { min-width: 0; }
 .hero-gameplay .rig-crop { width: 100%; margin: 0 auto; }
 .hero-details .hero-stats { margin-top: 0; border-radius: 16px; padding: 12px 16px; }
@@ -237,10 +236,10 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
   .bokeh { display: none; }
 }
 /* Public game credentials follow the same gold and red game identity. */
-.game-account-entry{max-width:760px;margin:28px auto 0;padding:20px 18px;border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);background:rgba(15,12,8,.7)}
-.game-account-entry h2{margin:0;color:var(--text);font-size:24px;line-height:1.25}
+.game-account-entry{max-width:420px;margin:0 auto 18px;padding:16px;border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);background:rgba(15,12,8,.7)}
+.game-account-entry h2{margin:0 0 14px;color:var(--text);font-size:20px;line-height:1.25}
 .game-account-entry p{margin:10px auto 18px;max-width:52ch;font-size:15px}
-.game-account-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.game-account-actions{display:grid;grid-template-columns:1fr;gap:10px}
 .game-account-actions .btn{font-size:15px;min-height:50px;padding:10px 20px;transform:none}
 .game-account-help{display:inline-block;margin-top:16px;font-size:14px;text-underline-offset:4px}
 .account-guide-title{margin:0 0 28px;color:var(--gold-soft);font-size:clamp(26px,5vw,38px);line-height:1.2;max-width:24ch}
@@ -311,9 +310,16 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
           <img src="assets/stage-over.svg" alt="">
         </div>
       </figure>
-      <button type="button" id="gameplay-toggle" aria-controls="loop">Play gameplay</button>
         </div>
         <div class="hero-details">
+      <div class="game-account-entry" aria-labelledby="game-account-entry-title">
+        <h2 id="game-account-entry-title">Get your game login ready</h2>
+        <div class="game-account-actions">
+          <a class="btn" href="https://accounts-mobile.bossran.net/create-account">Create game account</a>
+          <a class="btn btn-ghost" href="https://accounts-mobile.bossran.net/recover">Recover Google account</a>
+        </div>
+        <a class="game-account-help" href="#game-accounts">How signup and recovery work</a>
+      </div>
       <a class="hero-stats" id="hero-stats" href="#stats" hidden>
         <svg class="spark" viewBox="0 0 56 22" aria-hidden="true"></svg>
         <span><b data-hs="testers">0</b> beta testers</span>
@@ -350,15 +356,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         </div>
       </div>
 
-      <div class="game-account-entry" aria-labelledby="game-account-entry-title">
-        <h2 id="game-account-entry-title">Get your game login ready</h2>
-        <p>Create a username and password, or recover your existing Google-linked account.</p>
-        <div class="game-account-actions">
-          <a class="btn" href="https://accounts-mobile.bossran.net/create-account">Create game account</a>
-          <a class="btn btn-ghost" href="https://accounts-mobile.bossran.net/recover">Recover Google account</a>
-        </div>
-        <a class="game-account-help" href="#game-accounts">How signup and recovery work</a>
-      </div>
+
     </div>
   </div>
 
@@ -503,18 +501,11 @@ document.querySelectorAll('a[href="#direct-apk"]').forEach(link => {
 openApkFromLink();
 
 const loop = document.getElementById('loop');
-const gameplayToggle = document.getElementById('gameplay-toggle');
-function playGameplay() {
-  if (!loop.hasAttribute('src')) loop.src = loop.dataset.src;
-  loop.play().catch(() => { gameplayToggle.textContent = 'Play gameplay'; });
+// Muted inline gameplay; show the poster if autoplay is unavailable.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  loop.src = loop.dataset.src;
+  loop.play().catch(() => {});
 }
-loop.addEventListener('playing', () => { gameplayToggle.textContent = 'Pause gameplay'; });
-loop.addEventListener('pause', () => { gameplayToggle.textContent = 'Play gameplay'; });
-gameplayToggle.addEventListener('click', () => {
-  if (loop.paused) playGameplay();
-  else loop.pause();
-});
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) playGameplay();
 
 // Teaser: big play button over the poster, then the native controls take over (with sound)
 const teaser = document.getElementById('teaser-video');
