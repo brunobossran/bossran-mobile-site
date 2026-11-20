@@ -96,6 +96,17 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 .beta-live strong { display: block; color: var(--text); font-size: 18px; }
 .beta-live span { display: block; }
 
+.hero-title { font-size: clamp(25px, 4.3vw, 54px); text-wrap: balance; }
+.hero-title span { margin-top: .08em; }
+.clip-control { padding: 6px 12px; min-height: 36px; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.hero-gameplay:has(video[data-paused]) .rig { animation-play-state: paused; }
+.school-band { padding-block: clamp(38px, 5vw, 72px); }
+.school-band .display { font-size: clamp(26px, 4vw, 44px); }
+.school-crests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 650px; padding: 0; margin: 28px auto; list-style: none; }
+.school-crests li { font-size: clamp(14px, 2vw, 21px); font-weight: 750; color: var(--gold-soft); }
+.school-crests li + li { border-left: 1px solid var(--border); }
+.school-crests img { width: min(70%, 116px); margin: 0 auto 8px; mix-blend-mode: screen; }
+
 /* Phone in two hands (teaser skill art) with the raw gameplay footage playing on its screen */
 .rig-crop { width: calc(100% + var(--gutter) * 2); max-width: 1000px; margin: 30px 0 0 calc(var(--gutter) * -1); aspect-ratio: 1700 / 960; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
 @media (min-width: 1032px) { .rig-crop { width: 100%; margin-left: auto; margin-right: auto; } }
@@ -303,7 +314,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     <div class="wrap">
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
       <p class="kicker">Mobile open beta</p>
-      <h1 class="sr-only">BossRan Mobile open beta</h1>
+      <h1 class="display hero-title">Choose your school.<span>Fight alongside your guild.</span></h1>
       <div id="test" class="hero-actions">
         <nav id="signup" aria-label="Player sign-in and downloads">
           <a class="btn" href="https://accounts-mobile.bossran.net/create-account">Sign in</a>
@@ -317,13 +328,14 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <figure class="rig-crop" aria-label="A phone held in two hands, playing BossRan Mobile">
         <div class="rig">
           <img src="assets/stage-under.svg" alt="">
-          <div class="screen"><video id="loop" data-src="assets/gameplay-cw.mp4" poster="assets/gameplay-cw.jpg" muted loop playsinline preload="none" aria-label="BossRan Mobile CW gameplay with players battling in an arena"></video></div>
+          <div class="screen"><video id="loop" data-src="assets/guild-battle-loop.mp4" poster="assets/guild-battle-poster.jpg" muted loop playsinline preload="none" aria-label="BossRan Mobile CW gameplay with players battling in an arena"></video></div>
           <img src="assets/stage-over.svg" alt="">
         </div>
       </figure>
+      <button class="clip-control" id="clip-control" type="button" aria-controls="loop" hidden>Play gameplay</button>
         </div>
         <div class="hero-details">
-      <p class="beta-live"><strong>Live — play now!</strong><span>All items for free</span></p>
+      <p class="beta-live"><strong>Open beta bonus</strong><span>All items for free</span></p>
       <p class="beta-live">Our target for the official launch is <b>late November to early December 2026</b>.</p>
       <a class="hero-stats" id="hero-stats" href="#stats" hidden>
         <svg class="spark" viewBox="0 0 56 22" aria-hidden="true"></svg>
@@ -358,6 +370,77 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
 
     </div>
   </div>
+
+  <section id="schools" class="band center school-band" aria-labelledby="school-title">
+    <div class="wrap">
+      <h2 class="display" id="school-title">Which school is yours?</h2>
+      <ul class="school-crests">
+        <li><img src="assets/school-0.png" width="256" height="256" loading="lazy" alt="">Sacred Gate</li>
+        <li><img src="assets/school-1.png" width="256" height="256" loading="lazy" alt="">Mystic Peak</li>
+        <li><img src="assets/school-2.png" width="256" height="256" loading="lazy" alt="">Phoenix</li>
+      </ul>
+      <a class="btn btn-ghost" href="#teaser">Watch gameplay</a>
+    </div>
+  </section>
+
+  <section id="teaser" class="band center" aria-labelledby="teaser-title">
+    <div class="wrap">
+      <p class="kicker">Watch the teaser</p>
+      <h2 class="display" id="teaser-title">RAN, now<span>on mobile.</span></h2>
+      <div class="rule"></div>
+      <div class="player">
+        <video id="teaser-video" src="assets/teaser-waltz.mp4" poster="assets/teaser-waltz.jpg" preload="none" playsinline controls aria-label="BossRan Mobile Waltz gameplay teaser"></video>
+        <button class="play" type="button" id="teaser-play" aria-label="Play the teaser"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span></button>
+      </div>
+      <p class="note">Real gameplay from the BossRan Mobile test build.</p>
+      <ul class="features">
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-touch"/></svg></span><div><b>Built for touch</b><p>A joystick and skill buttons placed for your thumbs.</p></div></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><b>Play anywhere</b><p>No PC needed. Your RAN goes where you go.</p></div></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Same schools</b><p>Sacred Gate, Mystic Peak or Phoenix. Pick your side again.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="stats" class="band center" aria-labelledby="stats-title" hidden>
+    <div class="wrap">
+      <p class="kicker">Beta in numbers</p>
+      <h2 class="display" id="stats-title">The beta is<span>growing.</span></h2>
+      <div class="rule"></div>
+      <ul class="stats-tiles">
+        <li><b data-stat="testers">0</b><span>Beta testers</span></li>
+        <li><b data-stat="characters">0</b><span>Characters created</span></li>
+        <li><b data-stat="new_players">0</b><span>New players</span><small data-stat-day></small></li>
+        <li><b data-stat="players">0</b><span>Players</span><small data-stat-day></small></li>
+      </ul>
+      <div class="stats-panels">
+        <div class="stats-panel wide">
+          <h3 id="days-title">Players per day</h3>
+          <ul class="day-chart" id="day-chart" aria-labelledby="days-title"></ul>
+          <ul class="day-labels" id="day-labels" aria-hidden="true"></ul>
+        </div>
+        <div class="stats-panel">
+          <h3 id="classes-title">Most played classes</h3>
+          <ul class="bar-list" id="class-list" aria-labelledby="classes-title"></ul>
+        </div>
+        <div class="stats-panel">
+          <h3 id="schools-title">Characters per school</h3>
+          <ul class="bar-list" id="school-list" aria-labelledby="schools-title"></ul>
+        </div>
+      </div>
+      <p class="stats-updated" id="stats-updated"></p>
+    </div>
+  </section>
+
+  <section id="posters" class="band center" aria-labelledby="posters-title">
+    <div class="wrap">
+      <h2 class="display" id="posters-title">From our<span>Facebook page.</span></h2>
+      <ul class="facebook-posts">
+        <li><a href="https://www.facebook.com/122112926391492315/posts/122118875091492315"><img src="assets/facebook-reports.jpg" alt="" loading="lazy">How to report a beta bug</a></li>
+        <li><a href="https://www.facebook.com/reel/2684437282026227/"><img src="assets/facebook-cw.jpg" alt="" loading="lazy">Watch CW on mobile</a></li>
+        <li><a href="https://www.facebook.com/reel/1817162786155067/"><img src="assets/facebook-settings.jpg" alt="" loading="lazy">Customize your controls and settings</a></li>
+      </ul>
+    </div>
+  </section>
 
   <section id="game-accounts" class="band" aria-labelledby="game-accounts-title">
     <div class="wrap">
@@ -395,65 +478,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
         <p><strong>After saving:</strong> saved game sign-ins on your phones expire. Use your game username and new password the next time you log in.</p>
         <p>Cannot access your original Google account? <a href="mailto:support@bossran.net">Contact support</a>.</p>
       </div>
-    </div>
-  </section>
-
-  <section id="stats" class="band center" aria-labelledby="stats-title" hidden>
-    <div class="wrap">
-      <p class="kicker">Beta in numbers</p>
-      <h2 class="display" id="stats-title">The beta is<span>growing.</span></h2>
-      <div class="rule"></div>
-      <ul class="stats-tiles">
-        <li><b data-stat="testers">0</b><span>Beta testers</span></li>
-        <li><b data-stat="characters">0</b><span>Characters created</span></li>
-        <li><b data-stat="new_players">0</b><span>New players</span><small data-stat-day></small></li>
-        <li><b data-stat="players">0</b><span>Players</span><small data-stat-day></small></li>
-      </ul>
-      <div class="stats-panels">
-        <div class="stats-panel wide">
-          <h3 id="days-title">Players per day</h3>
-          <ul class="day-chart" id="day-chart" aria-labelledby="days-title"></ul>
-          <ul class="day-labels" id="day-labels" aria-hidden="true"></ul>
-        </div>
-        <div class="stats-panel">
-          <h3 id="classes-title">Most played classes</h3>
-          <ul class="bar-list" id="class-list" aria-labelledby="classes-title"></ul>
-        </div>
-        <div class="stats-panel">
-          <h3 id="schools-title">Characters per school</h3>
-          <ul class="bar-list" id="school-list" aria-labelledby="schools-title"></ul>
-        </div>
-      </div>
-      <p class="stats-updated" id="stats-updated"></p>
-    </div>
-  </section>
-
-  <section id="teaser" class="band center" aria-labelledby="teaser-title">
-    <div class="wrap">
-      <p class="kicker">Watch the teaser</p>
-      <h2 class="display" id="teaser-title">RAN, now<span>on mobile.</span></h2>
-      <div class="rule"></div>
-      <div class="player">
-        <video id="teaser-video" src="assets/teaser-waltz.mp4" poster="assets/teaser-waltz.jpg" preload="none" playsinline controls aria-label="BossRan Mobile Waltz gameplay teaser"></video>
-        <button class="play" type="button" id="teaser-play" aria-label="Play the teaser"><span><svg aria-hidden="true"><use href="#i-play"/></svg></span></button>
-      </div>
-      <p class="note">Real gameplay from the BossRan Mobile test build.</p>
-      <ul class="features">
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-touch"/></svg></span><div><b>Built for touch</b><p>A joystick and skill buttons placed for your thumbs.</p></div></li>
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><b>Play anywhere</b><p>No PC needed. Your RAN goes where you go.</p></div></li>
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Same schools</b><p>Sacred Gate, Mystic Peak or Phoenix. Pick your side again.</p></div></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="posters" class="band center" aria-labelledby="posters-title">
-    <div class="wrap">
-      <h2 class="display" id="posters-title">From our<span>Facebook page.</span></h2>
-      <ul class="facebook-posts">
-        <li><a href="https://www.facebook.com/122112926391492315/posts/122118875091492315"><img src="assets/facebook-reports.jpg" alt="" loading="lazy">How to report a beta bug</a></li>
-        <li><a href="https://www.facebook.com/reel/2684437282026227/"><img src="assets/facebook-cw.jpg" alt="" loading="lazy">Watch CW on mobile</a></li>
-        <li><a href="https://www.facebook.com/reel/1817162786155067/"><img src="assets/facebook-settings.jpg" alt="" loading="lazy">Customize your controls and settings</a></li>
-      </ul>
     </div>
   </section>
 
@@ -502,11 +526,24 @@ document.querySelectorAll('a[href="#direct-apk"]').forEach(link => {
 openApkFromLink();
 
 const loop = document.getElementById('loop');
-// Muted inline gameplay; show the poster if autoplay is unavailable.
-if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  loop.src = loop.dataset.src;
-  loop.play().catch(() => {});
+const clipControl = document.getElementById('clip-control');
+function updateClipControl() {
+  loop.toggleAttribute('data-paused', loop.paused);
+  clipControl.textContent = loop.paused ? 'Play gameplay' : 'Pause gameplay';
 }
+function playClip() {
+  if (!loop.hasAttribute('src')) loop.src = loop.dataset.src;
+  loop.play().catch(updateClipControl);
+}
+loop.addEventListener('play', updateClipControl);
+loop.addEventListener('pause', updateClipControl);
+clipControl.addEventListener('click', () => {
+  if (loop.paused) playClip();
+  else loop.pause();
+});
+updateClipControl();
+clipControl.hidden = false;
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) playClip();
 
 // Teaser: big play button over the poster, then the native controls take over (with sound)
 const teaser = document.getElementById('teaser-video');
