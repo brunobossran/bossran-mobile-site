@@ -96,16 +96,8 @@ h2.display { font-size: clamp(32px, 9vw, 72px); }
 .beta-live strong { display: block; color: var(--text); font-size: 18px; }
 .beta-live span { display: block; }
 
-.hero-title { font-size: clamp(25px, 4.3vw, 54px); text-wrap: balance; }
-.hero-title span { margin-top: .08em; }
 .clip-control { padding: 6px 12px; min-height: 36px; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .hero-gameplay:has(video[data-paused]) .rig { animation-play-state: paused; }
-.school-band { padding-block: clamp(38px, 5vw, 72px); }
-.school-band .display { font-size: clamp(26px, 4vw, 44px); }
-.school-crests { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 650px; padding: 0; margin: 28px auto; list-style: none; }
-.school-crests li { font-size: clamp(14px, 2vw, 21px); font-weight: 750; color: var(--gold-soft); }
-.school-crests li + li { border-left: 1px solid var(--border); }
-.school-crests img { width: min(70%, 116px); margin: 0 auto 8px; mix-blend-mode: screen; }
 
 /* Phone in two hands (teaser skill art) with the raw gameplay footage playing on its screen */
 .rig-crop { width: calc(100% + var(--gutter) * 2); max-width: 1000px; margin: 30px 0 0 calc(var(--gutter) * -1); aspect-ratio: 1700 / 960; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent); mask-image: linear-gradient(180deg, #000 82%, transparent); }
@@ -313,8 +305,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     </div>
     <div class="wrap">
       <img class="hero-logo" src="assets/logo.png" width="1111" height="376" alt="BossRan Mobile">
-      <p class="kicker">Mobile open beta</p>
-      <h1 class="display hero-title">Choose your school.<span>Fight alongside your guild.</span></h1>
+      <h1 class="kicker"><span class="sr-only">BossRan </span>Mobile open beta</h1>
       <div id="test" class="hero-actions">
         <nav id="signup" aria-label="Player sign-in and downloads">
           <a class="btn" href="https://accounts-mobile.bossran.net/create-account">Sign in</a>
@@ -371,18 +362,6 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
     </div>
   </div>
 
-  <section id="schools" class="band center school-band" aria-labelledby="school-title">
-    <div class="wrap">
-      <h2 class="display" id="school-title">Which school is yours?</h2>
-      <ul class="school-crests">
-        <li><img src="assets/school-0.png" width="256" height="256" loading="lazy" alt="">Sacred Gate</li>
-        <li><img src="assets/school-1.png" width="256" height="256" loading="lazy" alt="">Mystic Peak</li>
-        <li><img src="assets/school-2.png" width="256" height="256" loading="lazy" alt="">Phoenix</li>
-      </ul>
-      <a class="btn btn-ghost" href="#teaser">Watch gameplay</a>
-    </div>
-  </section>
-
   <section id="teaser" class="band center" aria-labelledby="teaser-title">
     <div class="wrap">
       <p class="kicker">Watch the teaser</p>
@@ -396,7 +375,7 @@ footer p { margin: 0; font-size: 13px; max-width: 70ch; }
       <ul class="features">
         <li><span class="ico"><svg aria-hidden="true"><use href="#i-touch"/></svg></span><div><b>Built for touch</b><p>A joystick and skill buttons placed for your thumbs.</p></div></li>
         <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><b>Play anywhere</b><p>No PC needed. Your RAN goes where you go.</p></div></li>
-        <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Same schools</b><p>Sacred Gate, Mystic Peak or Phoenix. Pick your side again.</p></div></li>
+        <li><span class="ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Guild battles</b><p>Team up with your guild and take on other players.</p></div></li>
       </ul>
     </div>
   </section>
