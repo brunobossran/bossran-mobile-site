@@ -44,18 +44,18 @@ img, video { display: block; max-width: 100%; height: auto; }
 a { color: var(--gold); }
 .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 var(--gutter); }
 
-/* House type: kicker with gold rules, two-line italic headline, second line gold */
+/* House type: kicker with gold rules, two-line headline, second line gold */
 .kicker { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 14px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
 .kicker::before, .kicker::after { content: ""; width: 22px; height: 2px; background: var(--gold); flex: none; }
-.display { margin: 0; color: var(--text); font-weight: 900; font-style: italic; line-height: .94; letter-spacing: -.01em; text-transform: uppercase; text-shadow: 0 6px 28px rgba(0, 0, 0, .55); }
+.display { margin: 0; color: var(--text); font-weight: 900; line-height: .94; letter-spacing: -.01em; text-transform: uppercase; text-shadow: 0 6px 28px rgba(0, 0, 0, .55); }
 .display span { display: block; color: var(--gold); }
 h2.display { font-size: clamp(32px, 9vw, 72px); }
 .rule { width: 160px; height: 3px; margin: 22px auto 0; background: linear-gradient(90deg, rgba(247, 196, 72, 0), var(--gold), rgba(247, 196, 72, 0)); }
 .lead { margin: 20px auto 0; max-width: 40ch; color: var(--muted); font-size: 18px; }
 .center { text-align: center; }
 
-/* Buttons: red skewed CTA (house style) and a quiet outline button */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 28px; background: var(--red); border: 0; border-radius: 6px; color: #fff; font: italic 900 18px/1 inherit; font-family: inherit; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; cursor: pointer; transform: skewX(-10deg); box-shadow: 0 10px 30px rgba(226, 52, 38, .35), inset 0 2px 0 rgba(255, 140, 110, .55); }
+/* Buttons: red CTA (house style) and a quiet outline button */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 28px; background: var(--red); border: 0; border-radius: 6px; color: #fff; font-family: inherit; font-size: 18px; font-weight: 700; line-height: 1; letter-spacing: .02em; text-transform: uppercase; text-decoration: none; cursor: pointer; box-shadow: 0 10px 30px rgba(226, 52, 38, .35), inset 0 2px 0 rgba(255, 140, 110, .55); }
 .btn:hover { filter: brightness(1.1); }
 .btn:disabled { opacity: .6; cursor: progress; }
 .btn svg { width: 20px; height: 20px; }
@@ -138,7 +138,7 @@ section { padding: 72px 0; }
 .features li { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 18px; text-align: left; }
 .features .ico { flex: none; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 12px; background: rgba(247, 196, 72, .12); color: var(--gold); }
 .features .ico svg { width: 28px; height: 28px; }
-.features b { display: block; color: var(--text); font-size: 18px; font-style: italic; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; }
+.features b { display: block; color: var(--text); font-size: 18px; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; }
 .features p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
 @media (min-width: 760px) { .features { grid-template-columns: repeat(3, 1fr); } .features li { flex-direction: column; } }
 
@@ -175,14 +175,14 @@ section { padding: 72px 0; }
 .hero-stats:hover { border-color: var(--gold); }
 .hero-stats:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .hero-stats .spark { flex: none; width: 56px; height: 22px; }
-.hero-stats b { color: var(--gold); font-size: 18px; font-style: italic; font-weight: 900; font-variant-numeric: tabular-nums; }
+.hero-stats b { color: var(--gold); font-size: 18px; font-weight: 900; font-variant-numeric: tabular-nums; }
 .hero-stats .grow { color: var(--text); white-space: nowrap; }
 .hero-stats .grow::before { content: "\25B2"; margin-right: 4px; color: var(--gold); font-size: 11px; }
 .hero-stats .more { color: var(--muted); font-size: 13px; white-space: nowrap; }
 /* Beta in numbers (data: assets/stats.json, refreshed hourly by the stats job) */
 .stats-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 960px; margin: 32px auto 0; padding: 0; list-style: none; }
 .stats-tiles li { padding: 18px 12px; background: var(--panel); border: 2px solid var(--border-strong); border-radius: 16px; }
-.stats-tiles b { display: block; color: var(--gold); font-size: clamp(30px, 8vw, 46px); font-style: italic; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+.stats-tiles b { display: block; color: var(--gold); font-size: clamp(30px, 8vw, 46px); font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
 .stats-tiles span { display: block; margin-top: 8px; color: var(--text-2); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .stats-tiles small { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
 .stats-panels { display: grid; gap: 14px; max-width: 960px; margin: 14px auto 0; text-align: left; }
@@ -291,8 +291,7 @@ button,.btn,.hdr nav a,.kicker,label {font-family:'Saira Semi Condensed','Arial 
 .hero-intro .kicker {justify-content:flex-start;letter-spacing:.18em}
 .hero-intro .kicker::before {width:24px}
 .hero-intro .kicker::after {display:none}
-.hero-intro h1 {font-size:clamp(46px,17cqi,88px);letter-spacing:-.035em}
-.hero-intro h1 em {color:var(--gold);font-style:inherit}
+.hero-intro h1 {font-size:clamp(40px,14.8cqi,88px);letter-spacing:-.035em}
 .hero-actions {margin:26px 0 0}
 .hero-actions nav {display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);width:min(100%,306px);gap:10px 12px;align-items:center}
 .hero-actions .btn:first-child {grid-column:1/-1;margin:0;min-height:49px;letter-spacing:.06em}
@@ -322,7 +321,7 @@ footer nav {gap:8px 20px}
   .hero-intro {text-align:center}
   .hero-intro .kicker {justify-content:center}
   .hero-intro .kicker::after {display:block;width:24px}
-  .hero-intro h1 {font-size:clamp(46px,17cqi,76px)}
+  .hero-intro h1 {font-size:clamp(40px,14.8cqi,76px)}
   .hero-actions {margin-top:18px}
   .hero-actions nav {margin:0 auto}
   .apk-download {justify-self:center}
@@ -367,7 +366,7 @@ footer nav {gap:8px 20px}
       <div class="hero-layout">
         <div class="hero-intro">
           <p class="kicker">Mobile open beta</p>
-          <h1 class="display">BossRan, now<br><em>on mobile.</em></h1>
+          <h1 class="display">Be the boss <span>on mobile.</span></h1>
       <div id="test" class="hero-actions">
         <nav id="signup" aria-label="Player sign-in and downloads">
           <a class="btn" href="https://accounts-mobile.bossran.net/create-account">Sign in</a>
