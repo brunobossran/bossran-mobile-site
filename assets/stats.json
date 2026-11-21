@@ -4,7 +4,7 @@
    "date": "2026-11-08",
    "new_players": 1188,
    "players": 1197,
-   "new_characters": 1324
+   "new_characters": 1323
   },
   {
    "date": "2026-11-09",
@@ -34,25 +34,25 @@
    "date": "2026-11-13",
    "new_players": 655,
    "players": 2574,
-   "new_characters": 1206
+   "new_characters": 1205
   },
   {
    "date": "2026-11-14",
    "new_players": 1204,
    "players": 3224,
-   "new_characters": 1837
+   "new_characters": 1836
   },
   {
    "date": "2026-11-15",
    "new_players": 932,
    "players": 3511,
-   "new_characters": 1618
+   "new_characters": 1617
   },
   {
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1611
+   "new_characters": 1609
   },
   {
    "date": "2026-11-17",
@@ -64,41 +64,41 @@
    "date": "2026-11-18",
    "new_players": 806,
    "players": 3515,
-   "new_characters": 1290
+   "new_characters": 1288
   },
   {
    "date": "2026-11-19",
    "new_players": 618,
    "players": 3636,
-   "new_characters": 1221
+   "new_characters": 1219
   },
   {
    "date": "2026-11-20",
    "new_players": 509,
    "players": 3555,
-   "new_characters": 1102
+   "new_characters": 1098
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 5913
+   "count": 5927
   },
   {
    "name": "Gunner",
-   "count": 3172
+   "count": 3177
   },
   {
    "name": "Swordsman",
-   "count": 2270
+   "count": 2269
   },
   {
    "name": "Archer",
-   "count": 2232
+   "count": 2236
   },
   {
    "name": "Brawler",
-   "count": 1915
+   "count": 1920
   },
   {
    "name": "Shaman",
@@ -108,23 +108,23 @@
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 7593
+   "count": 7603
   },
   {
    "name": "Mystic Peak",
-   "count": 5123
+   "count": 5135
   },
   {
    "name": "Phoenix",
-   "count": 3804
+   "count": 3809
   }
  ],
- "updated": "2026-11-21T07:20:11+08:00",
- "testers": 9950,
- "characters": 16520,
+ "updated": "2026-11-21T08:20:12+08:00",
+ "testers": 9975,
+ "characters": 16547,
  "today": {
   "date": "2026-11-21",
-  "new_players": 89,
-  "players": 841
+  "new_players": 114,
+  "players": 1147
  }
 }
