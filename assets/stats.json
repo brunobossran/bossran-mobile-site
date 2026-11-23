@@ -22,13 +22,13 @@
    "date": "2026-11-11",
    "new_players": 603,
    "players": 1965,
-   "new_characters": 956
+   "new_characters": 954
   },
   {
    "date": "2026-11-12",
    "new_players": 763,
    "players": 2330,
-   "new_characters": 1226
+   "new_characters": 1225
   },
   {
    "date": "2026-11-13",
@@ -52,7 +52,7 @@
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1586
+   "new_characters": 1585
   },
   {
    "date": "2026-11-17",
@@ -64,19 +64,19 @@
    "date": "2026-11-18",
    "new_players": 806,
    "players": 3515,
-   "new_characters": 1265
+   "new_characters": 1264
   },
   {
    "date": "2026-11-19",
    "new_players": 618,
    "players": 3636,
-   "new_characters": 1179
+   "new_characters": 1178
   },
   {
    "date": "2026-11-20",
    "new_players": 509,
    "players": 3555,
-   "new_characters": 1047
+   "new_characters": 1046
   },
   {
    "date": "2026-11-21",
@@ -88,29 +88,29 @@
    "date": "2026-11-22",
    "new_players": 702,
    "players": 4152,
-   "new_characters": 1358
+   "new_characters": 1355
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 6616
+   "count": 6641
   },
   {
    "name": "Gunner",
-   "count": 3470
+   "count": 3483
   },
   {
    "name": "Archer",
-   "count": 2683
+   "count": 2699
   },
   {
    "name": "Swordsman",
-   "count": 2615
+   "count": 2624
   },
   {
    "name": "Brawler",
-   "count": 2184
+   "count": 2191
   },
   {
    "name": "Shaman",
@@ -120,23 +120,23 @@
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 8493
+   "count": 8521
   },
   {
    "name": "Mystic Peak",
-   "count": 5937
+   "count": 5960
   },
   {
    "name": "Phoenix",
-   "count": 4305
+   "count": 4324
   }
  ],
- "updated": "2026-11-23T10:20:04+08:00",
- "testers": 11369,
- "characters": 18735,
+ "updated": "2026-11-23T11:20:07+08:00",
+ "testers": 11430,
+ "characters": 18805,
  "today": {
   "date": "2026-11-23",
-  "new_players": 234,
-  "players": 2311
+  "new_players": 295,
+  "players": 2533
  }
 }
