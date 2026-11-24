@@ -4,7 +4,7 @@
    "date": "2026-11-08",
    "new_players": 1188,
    "players": 1197,
-   "new_characters": 1301
+   "new_characters": 1300
   },
   {
    "date": "2026-11-09",
@@ -28,7 +28,7 @@
    "date": "2026-11-12",
    "new_players": 763,
    "players": 2330,
-   "new_characters": 1214
+   "new_characters": 1213
   },
   {
    "date": "2026-11-13",
@@ -52,7 +52,7 @@
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1559
+   "new_characters": 1558
   },
   {
    "date": "2026-11-17",
@@ -64,13 +64,13 @@
    "date": "2026-11-18",
    "new_players": 806,
    "players": 3515,
-   "new_characters": 1252
+   "new_characters": 1251
   },
   {
    "date": "2026-11-19",
    "new_players": 618,
    "players": 3636,
-   "new_characters": 1154
+   "new_characters": 1153
   },
   {
    "date": "2026-11-20",
@@ -94,55 +94,61 @@
    "date": "2026-11-23",
    "new_players": 1404,
    "players": 5159,
-   "new_characters": 1977
+   "new_characters": 1976
+  },
+  {
+   "date": "2026-11-24",
+   "new_players": 859,
+   "players": 4988,
+   "new_characters": 1638
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 7618
+   "count": 7634
   },
   {
    "name": "Gunner",
-   "count": 3901
+   "count": 3906
   },
   {
    "name": "Archer",
-   "count": 3184
+   "count": 3205
   },
   {
    "name": "Swordsman",
-   "count": 3077
+   "count": 3083
   },
   {
    "name": "Brawler",
-   "count": 2521
+   "count": 2525
   },
   {
    "name": "Shaman",
-   "count": 1332
+   "count": 1333
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 9873
+   "count": 9899
   },
   {
    "name": "Mystic Peak",
-   "count": 6698
+   "count": 6709
   },
   {
    "name": "Phoenix",
-   "count": 5062
+   "count": 5078
   }
  ],
- "updated": "2026-11-24T23:20:08+08:00",
- "testers": 13370,
- "characters": 21633,
+ "updated": "2026-11-25T00:20:08+08:00",
+ "testers": 13404,
+ "characters": 21686,
  "today": {
-  "date": "2026-11-24",
-  "new_players": 831,
-  "players": 4918
+  "date": "2026-11-25",
+  "new_players": 6,
+  "players": 286
  }
 }
