@@ -4,25 +4,25 @@
    "date": "2026-11-08",
    "new_players": 1188,
    "players": 1197,
-   "new_characters": 1303
+   "new_characters": 1302
   },
   {
    "date": "2026-11-09",
    "new_players": 721,
    "players": 1577,
-   "new_characters": 976
+   "new_characters": 974
   },
   {
    "date": "2026-11-10",
    "new_players": 524,
    "players": 1763,
-   "new_characters": 891
+   "new_characters": 890
   },
   {
    "date": "2026-11-11",
    "new_players": 603,
    "players": 1965,
-   "new_characters": 947
+   "new_characters": 946
   },
   {
    "date": "2026-11-12",
@@ -34,115 +34,115 @@
    "date": "2026-11-13",
    "new_players": 655,
    "players": 2574,
-   "new_characters": 1180
+   "new_characters": 1178
   },
   {
    "date": "2026-11-14",
    "new_players": 1204,
    "players": 3224,
-   "new_characters": 1783
+   "new_characters": 1781
   },
   {
    "date": "2026-11-15",
    "new_players": 932,
    "players": 3511,
-   "new_characters": 1578
+   "new_characters": 1575
   },
   {
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1570
+   "new_characters": 1567
   },
   {
    "date": "2026-11-17",
    "new_players": 420,
    "players": 3289,
-   "new_characters": 1035
+   "new_characters": 1034
   },
   {
    "date": "2026-11-18",
    "new_players": 806,
    "players": 3515,
-   "new_characters": 1258
+   "new_characters": 1255
   },
   {
    "date": "2026-11-19",
    "new_players": 618,
    "players": 3636,
-   "new_characters": 1164
+   "new_characters": 1161
   },
   {
    "date": "2026-11-20",
    "new_players": 509,
    "players": 3555,
-   "new_characters": 1030
+   "new_characters": 1029
   },
   {
    "date": "2026-11-21",
    "new_players": 572,
    "players": 3566,
-   "new_characters": 885
+   "new_characters": 881
   },
   {
    "date": "2026-11-22",
    "new_players": 702,
    "players": 4152,
-   "new_characters": 1324
+   "new_characters": 1317
   },
   {
    "date": "2026-11-23",
    "new_players": 1404,
    "players": 5159,
-   "new_characters": 2024
+   "new_characters": 2004
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 7322
+   "count": 7423
   },
   {
    "name": "Gunner",
-   "count": 3753
+   "count": 3811
   },
   {
    "name": "Archer",
-   "count": 3003
+   "count": 3054
   },
   {
    "name": "Swordsman",
-   "count": 2909
+   "count": 2965
   },
   {
    "name": "Brawler",
-   "count": 2400
+   "count": 2444
   },
   {
    "name": "Shaman",
-   "count": 1261
+   "count": 1281
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 9351
+   "count": 9513
   },
   {
    "name": "Mystic Peak",
-   "count": 6495
+   "count": 6572
   },
   {
    "name": "Phoenix",
-   "count": 4802
+   "count": 4893
   }
  ],
- "updated": "2026-11-24T09:20:06+08:00",
- "testers": 12793,
- "characters": 20648,
+ "updated": "2026-11-24T14:20:07+08:00",
+ "testers": 12988,
+ "characters": 20978,
  "today": {
   "date": "2026-11-24",
-  "new_players": 254,
-  "players": 2485
+  "new_players": 449,
+  "players": 3551
  }
 }
