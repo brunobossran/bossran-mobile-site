@@ -16,7 +16,7 @@
    "date": "2026-11-10",
    "new_players": 524,
    "players": 1763,
-   "new_characters": 885
+   "new_characters": 884
   },
   {
    "date": "2026-11-11",
@@ -40,19 +40,19 @@
    "date": "2026-11-14",
    "new_players": 1204,
    "players": 3224,
-   "new_characters": 1776
+   "new_characters": 1774
   },
   {
    "date": "2026-11-15",
    "new_players": 932,
    "players": 3511,
-   "new_characters": 1572
+   "new_characters": 1570
   },
   {
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1557
+   "new_characters": 1556
   },
   {
    "date": "2026-11-17",
@@ -82,73 +82,73 @@
    "date": "2026-11-21",
    "new_players": 572,
    "players": 3566,
-   "new_characters": 873
+   "new_characters": 872
   },
   {
    "date": "2026-11-22",
    "new_players": 702,
    "players": 4152,
-   "new_characters": 1295
+   "new_characters": 1294
   },
   {
    "date": "2026-11-23",
    "new_players": 1404,
    "players": 5159,
-   "new_characters": 1955
+   "new_characters": 1954
   },
   {
    "date": "2026-11-24",
    "new_players": 859,
    "players": 4988,
-   "new_characters": 1586
+   "new_characters": 1583
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 7925
+   "count": 7936
   },
   {
    "name": "Gunner",
-   "count": 4051
+   "count": 4064
   },
   {
    "name": "Archer",
-   "count": 3372
+   "count": 3386
   },
   {
    "name": "Swordsman",
-   "count": 3219
+   "count": 3225
   },
   {
    "name": "Brawler",
-   "count": 2662
+   "count": 2679
   },
   {
    "name": "Shaman",
-   "count": 1391
+   "count": 1400
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 10344
+   "count": 10375
   },
   {
    "name": "Mystic Peak",
-   "count": 6943
+   "count": 6968
   },
   {
    "name": "Phoenix",
-   "count": 5333
+   "count": 5347
   }
  ],
- "updated": "2026-11-25T17:20:07+08:00",
- "testers": 13903,
- "characters": 22620,
+ "updated": "2026-11-25T18:20:06+08:00",
+ "testers": 13953,
+ "characters": 22690,
  "today": {
   "date": "2026-11-25",
-  "new_players": 505,
-  "players": 4127
+  "new_players": 555,
+  "players": 4315
  }
 }
