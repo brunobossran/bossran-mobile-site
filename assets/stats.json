@@ -10,13 +10,13 @@
    "date": "2026-11-09",
    "new_players": 721,
    "players": 1577,
-   "new_characters": 972
+   "new_characters": 971
   },
   {
    "date": "2026-11-10",
    "new_players": 524,
    "players": 1763,
-   "new_characters": 886
+   "new_characters": 885
   },
   {
    "date": "2026-11-11",
@@ -34,7 +34,7 @@
    "date": "2026-11-13",
    "new_players": 655,
    "players": 2574,
-   "new_characters": 1172
+   "new_characters": 1171
   },
   {
    "date": "2026-11-14",
@@ -70,7 +70,7 @@
    "date": "2026-11-19",
    "new_players": 618,
    "players": 3636,
-   "new_characters": 1152
+   "new_characters": 1151
   },
   {
    "date": "2026-11-20",
@@ -88,67 +88,67 @@
    "date": "2026-11-22",
    "new_players": 702,
    "players": 4152,
-   "new_characters": 1302
+   "new_characters": 1301
   },
   {
    "date": "2026-11-23",
    "new_players": 1404,
    "players": 5159,
-   "new_characters": 1961
+   "new_characters": 1960
   },
   {
    "date": "2026-11-24",
    "new_players": 859,
    "players": 4988,
-   "new_characters": 1600
+   "new_characters": 1599
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 7815
+   "count": 7841
   },
   {
    "name": "Gunner",
-   "count": 3995
+   "count": 4016
   },
   {
    "name": "Archer",
-   "count": 3305
+   "count": 3317
   },
   {
    "name": "Swordsman",
-   "count": 3172
+   "count": 3181
   },
   {
    "name": "Brawler",
-   "count": 2605
+   "count": 2613
   },
   {
    "name": "Shaman",
-   "count": 1377
+   "count": 1381
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 10187
+   "count": 10230
   },
   {
    "name": "Mystic Peak",
-   "count": 6861
+   "count": 6877
   },
   {
    "name": "Phoenix",
-   "count": 5221
+   "count": 5242
   }
  ],
- "updated": "2026-11-25T12:20:08+08:00",
- "testers": 13721,
- "characters": 22269,
+ "updated": "2026-11-25T13:20:07+08:00",
+ "testers": 13757,
+ "characters": 22349,
  "today": {
   "date": "2026-11-25",
-  "new_players": 323,
-  "players": 3252
+  "new_players": 359,
+  "players": 3445
  }
 }
