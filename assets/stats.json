@@ -10,7 +10,7 @@
    "date": "2026-11-09",
    "new_players": 721,
    "players": 1577,
-   "new_characters": 970
+   "new_characters": 969
   },
   {
    "date": "2026-11-10",
@@ -46,7 +46,7 @@
    "date": "2026-11-15",
    "new_players": 932,
    "players": 3511,
-   "new_characters": 1563
+   "new_characters": 1562
   },
   {
    "date": "2026-11-16",
@@ -64,7 +64,7 @@
    "date": "2026-11-18",
    "new_players": 806,
    "players": 3515,
-   "new_characters": 1239
+   "new_characters": 1237
   },
   {
    "date": "2026-11-19",
@@ -76,7 +76,7 @@
    "date": "2026-11-20",
    "new_players": 509,
    "players": 3555,
-   "new_characters": 1009
+   "new_characters": 1008
   },
   {
    "date": "2026-11-21",
@@ -100,61 +100,61 @@
    "date": "2026-11-24",
    "new_players": 859,
    "players": 4988,
-   "new_characters": 1549
+   "new_characters": 1548
   },
   {
    "date": "2026-11-25",
    "new_players": 871,
    "players": 5227,
-   "new_characters": 1682
+   "new_characters": 1679
   }
  ],
  "classes": [
   {
    "name": "Extreme",
-   "count": 8250
+   "count": 8270
   },
   {
    "name": "Gunner",
-   "count": 4213
+   "count": 4227
   },
   {
    "name": "Archer",
-   "count": 3569
+   "count": 3583
   },
   {
    "name": "Swordsman",
-   "count": 3387
+   "count": 3394
   },
   {
    "name": "Brawler",
-   "count": 2788
+   "count": 2793
   },
   {
    "name": "Shaman",
-   "count": 1483
+   "count": 1488
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 10851
+   "count": 10881
   },
   {
    "name": "Mystic Peak",
-   "count": 7238
+   "count": 7254
   },
   {
    "name": "Phoenix",
-   "count": 5601
+   "count": 5620
   }
  ],
- "updated": "2026-11-26T11:20:06+08:00",
- "testers": 14559,
- "characters": 23690,
+ "updated": "2026-11-26T12:20:07+08:00",
+ "testers": 14595,
+ "characters": 23755,
  "today": {
   "date": "2026-11-26",
-  "new_players": 290,
-  "players": 3146
+  "new_players": 326,
+  "players": 3393
  }
 }
