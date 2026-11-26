@@ -107,6 +107,12 @@
    "new_players": 871,
    "players": 5227,
    "new_characters": 1651
+  },
+  {
+   "date": "2026-11-26",
+   "new_players": 762,
+   "players": 5202,
+   "new_characters": 1584
   }
  ],
  "classes": [
@@ -149,12 +155,12 @@
    "count": 5859
   }
  ],
- "updated": "2026-11-26T23:20:24+08:00",
+ "updated": "2026-11-27T00:20:06+08:00",
  "testers": 15031,
  "characters": 24577,
  "today": {
-  "date": "2026-11-26",
-  "new_players": 762,
-  "players": 5202
+  "date": "2026-11-27",
+  "new_players": 0,
+  "players": 0
  }
 }
