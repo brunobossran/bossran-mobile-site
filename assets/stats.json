@@ -10,13 +10,13 @@
    "date": "2026-11-09",
    "new_players": 721,
    "players": 1577,
-   "new_characters": 968
+   "new_characters": 967
   },
   {
    "date": "2026-11-10",
    "new_players": 524,
    "players": 1763,
-   "new_characters": 880
+   "new_characters": 879
   },
   {
    "date": "2026-11-11",
@@ -28,7 +28,7 @@
    "date": "2026-11-12",
    "new_players": 763,
    "players": 2330,
-   "new_characters": 1195
+   "new_characters": 1194
   },
   {
    "date": "2026-11-13",
@@ -52,7 +52,7 @@
    "date": "2026-11-16",
    "new_players": 903,
    "players": 3635,
-   "new_characters": 1540
+   "new_characters": 1538
   },
   {
    "date": "2026-11-17",
@@ -88,25 +88,25 @@
    "date": "2026-11-22",
    "new_players": 702,
    "players": 4152,
-   "new_characters": 1270
+   "new_characters": 1268
   },
   {
    "date": "2026-11-23",
    "new_players": 1404,
    "players": 5159,
-   "new_characters": 1925
+   "new_characters": 1922
   },
   {
    "date": "2026-11-24",
    "new_players": 859,
    "players": 4988,
-   "new_characters": 1522
+   "new_characters": 1520
   },
   {
    "date": "2026-11-25",
    "new_players": 871,
    "players": 5227,
-   "new_characters": 1612
+   "new_characters": 1611
   },
   {
    "date": "2026-11-26",
@@ -118,49 +118,49 @@
  "classes": [
   {
    "name": "Extreme",
-   "count": 8779
+   "count": 8793
   },
   {
    "name": "Gunner",
-   "count": 4533
+   "count": 4543
   },
   {
    "name": "Archer",
-   "count": 3917
+   "count": 3937
   },
   {
    "name": "Swordsman",
-   "count": 3673
+   "count": 3688
   },
   {
    "name": "Brawler",
-   "count": 3054
+   "count": 3067
   },
   {
    "name": "Shaman",
-   "count": 1618
+   "count": 1621
   }
  ],
  "schools": [
   {
    "name": "Sacred Gate",
-   "count": 11724
+   "count": 11750
   },
   {
    "name": "Mystic Peak",
-   "count": 7714
+   "count": 7736
   },
   {
    "name": "Phoenix",
-   "count": 6136
+   "count": 6163
   }
  ],
- "updated": "2026-11-27T22:20:10+08:00",
- "testers": 15608,
- "characters": 25574,
+ "updated": "2026-11-27T23:20:09+08:00",
+ "testers": 15630,
+ "characters": 25649,
  "today": {
   "date": "2026-11-27",
-  "new_players": 577,
-  "players": 4876
+  "new_players": 599,
+  "players": 4987
  }
 }
